@@ -6,6 +6,16 @@
 @section('content')
 <div class="row justify-content-center">
     <div class="col-lg-10">
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb" class="mb-3">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ route('bidan.dashboard') }}">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('bidan.patients.index') }}">Data Pasien</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('bidan.patients.show', $patient->id) }}">{{ $patient->nama_lengkap }}</a></li>
+                <li class="breadcrumb-item active">Edit ANC</li>
+            </ol>
+        </nav>
+
         <div class="card custom-card">
             <div class="card-header">
                 <i class="bi bi-pencil-square text-warning me-2"></i>

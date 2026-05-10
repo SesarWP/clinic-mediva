@@ -25,9 +25,8 @@
                             <th>BB</th>
                             <th>TFU</th>
                             <th>DJJ</th>
-                            <th>Keluhan</th>
-                            <th>Catatan Bidan</th>
                             <th>Jadwal Berikutnya</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,14 +42,17 @@
                             <td>{{ $exam->berat_badan }} kg</td>
                             <td>{{ $exam->tinggi_fundus ? $exam->tinggi_fundus.' cm' : '-' }}</td>
                             <td>{{ $exam->denyut_jantung_janin ?: '-' }}</td>
-                            <td><small>{{ $exam->keluhan ?: '-' }}</small></td>
-                            <td><small>{{ $exam->catatan_bidan ?: '-' }}</small></td>
                             <td>
                                 @if($exam->jadwal_kunjungan_berikutnya)
                                     <span class="badge bg-primary bg-opacity-10 text-primary badge-risk">
                                         {{ $exam->jadwal_kunjungan_berikutnya->format('d/m/Y') }}
                                     </span>
                                 @else - @endif
+                            </td>
+                            <td>
+                                <a href="{{ route('pasien.riwayat.anc', $exam->id) }}" class="btn btn-sm btn-outline-primary" title="Lihat Detail">
+                                    <i class="bi bi-eye"></i>
+                                </a>
                             </td>
                         </tr>
                         @endforeach

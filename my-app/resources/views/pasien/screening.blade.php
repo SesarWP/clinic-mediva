@@ -23,8 +23,8 @@
                             <th>Kadar HB</th>
                             <th>Status</th>
                             <th>Tindak Lanjut</th>
-                            <th>Catatan</th>
                             <th>Diperiksa Oleh</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,9 +41,13 @@
                                     {{ ucfirst($s->status_anemia) }}
                                 </span>
                             </td>
-                            <td><small>{{ $s->tindakan ?: '-' }}</small></td>
-                            <td><small>{{ $s->catatan ?: '-' }}</small></td>
+                            <td><small>{{ Str::limit($s->tindakan, 50) ?: '-' }}</small></td>
                             <td><small>{{ $s->bidan->name }}</small></td>
+                            <td>
+                                <a href="{{ route('pasien.screening.detail', $s->id) }}" class="btn btn-sm btn-outline-primary" title="Lihat Detail">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

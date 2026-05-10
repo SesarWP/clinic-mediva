@@ -10,6 +10,22 @@ use Illuminate\Http\Request;
 
 class AnemiaScreeningController extends Controller
 {
+    public function selectPatient(Request $request)
+    {
+        $query = Patient::query();
+
+        if ($request->has('search') && $request->search) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('nama_lengkap', 'like', "%{$search}%")
+                  ->orWhere('nik', 'like', "%{$search}%");
+            });
+        }
+
+        $patients = $query->orderBy('nama_lengkap')->paginate(10);
+        return view('bidan.screening.select-patient', compact('patients'));
+    }
+
     public function create(string $patientId)
     {
         $patient = Patient::findOrFail($patientId);
@@ -46,6 +62,13 @@ class AnemiaScreeningController extends Controller
             ->with('success', 'Data screening anemia berhasil disimpan. Status: ' . ucfirst($validated['status_anemia']));
     }
 
+    public function show(string $id)
+    {
+        $screening = AnemiaScreening::with(['patient', 'bidan', 'ancExamination'])->findOrFail($id);
+        $patient = $screening->patient;
+        return view('bidan.screening.show', compact('screening', 'patient'));
+    }
+
     public function edit(string $id)
     {
         $screening = AnemiaScreening::with('patient')->findOrFail($id);
@@ -74,5 +97,15 @@ class AnemiaScreeningController extends Controller
 
         return redirect()->route('bidan.patients.show', $screening->patient_id)
             ->with('success', 'Data screening anemia berhasil diperbarui.');
+    }
+
+    public function destroy(string $id)
+    {
+        $screening = AnemiaScreening::findOrFail($id);
+        $patientId = $screening->patient_id;
+        $screening->delete();
+
+        return redirect()->route('bidan.patients.show', $patientId)
+            ->with('success', 'Data screening anemia berhasil dihapus.');
     }
 }

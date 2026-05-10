@@ -60,4 +60,32 @@ class DashboardController extends Controller
 
         return view('pasien.screening', compact('patient', 'screenings'));
     }
+
+    public function ancDetail($id)
+    {
+        $user = auth()->user();
+        $patient = $user->patient;
+
+        if (!$patient) {
+            return view('pasien.no-data');
+        }
+
+        $anc = $patient->ancExaminations()->with('bidan')->findOrFail($id);
+
+        return view('pasien.anc-detail', compact('patient', 'anc'));
+    }
+
+    public function screeningDetail($id)
+    {
+        $user = auth()->user();
+        $patient = $user->patient;
+
+        if (!$patient) {
+            return view('pasien.no-data');
+        }
+
+        $screening = $patient->anemiaScreenings()->with(['bidan', 'ancExamination'])->findOrFail($id);
+
+        return view('pasien.screening-detail', compact('patient', 'screening'));
+    }
 }

@@ -9,6 +9,22 @@ use Illuminate\Http\Request;
 
 class AncExaminationController extends Controller
 {
+    public function selectPatient(Request $request)
+    {
+        $query = Patient::query();
+
+        if ($request->has('search') && $request->search) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('nama_lengkap', 'like', "%{$search}%")
+                  ->orWhere('nik', 'like', "%{$search}%");
+            });
+        }
+
+        $patients = $query->orderBy('nama_lengkap')->paginate(10);
+        return view('bidan.anc.select-patient', compact('patients'));
+    }
+
     public function create(string $patientId)
     {
         $patient = Patient::findOrFail($patientId);
@@ -46,6 +62,13 @@ class AncExaminationController extends Controller
 
         return redirect()->route('bidan.patients.show', $patient->id)
             ->with('success', 'Data pemeriksaan ANC berhasil disimpan.');
+    }
+
+    public function show(string $id)
+    {
+        $anc = AncExamination::with(['patient', 'bidan'])->findOrFail($id);
+        $patient = $anc->patient;
+        return view('bidan.anc.show', compact('anc', 'patient'));
     }
 
     public function edit(string $id)

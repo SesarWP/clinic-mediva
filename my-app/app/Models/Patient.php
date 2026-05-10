@@ -53,6 +53,14 @@ class Patient extends Model
     }
 
     /**
+     * Update kesehatan harian/mingguan
+     */
+    public function healthUpdates()
+    {
+        return $this->hasMany(HealthUpdate::class)->orderBy('tanggal_update', 'desc');
+    }
+
+    /**
      * Hitung usia kehamilan dari HPHT
      */
     public function getUsiaKehamilanAttribute(): ?string

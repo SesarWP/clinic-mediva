@@ -4,11 +4,11 @@
 <div class="sidebar-overlay"></div>
 
 <!-- Sidebar -->
-<nav class="sidebar" style="background: linear-gradient(180deg, #0c4a6e 0%, #164e63 100%);">
+<nav class="sidebar" style="background: linear-gradient(180deg, #0c4a6e 0%, #075985 100%);">
     <div class="sidebar-brand">
         <div class="d-flex align-items-center gap-3">
-            <div style="width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#06b6d4,#0ea5e9);display:flex;align-items:center;justify-content:center;">
-                <i class="bi bi-person-heart text-white"></i>
+            <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#06b6d4,#0ea5e9);display:flex;align-items:center;justify-content:center;box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);">
+                <i class="bi bi-person-heart text-white" style="font-size:1.3rem;"></i>
             </div>
             <div>
                 <h4 class="text-white mb-0">Portal Pasien</h4>
@@ -19,17 +19,20 @@
 
     <div class="sidebar-nav">
         <div class="nav-label">Menu</div>
-        <a href="{{ route('pasien.dashboard') }}" class="nav-link {{ request()->routeIs('pasien.dashboard') ? 'active' : '' }}" style="{{ request()->routeIs('pasien.dashboard') ? 'background:linear-gradient(135deg,#06b6d4,#0ea5e9);' : '' }}">
+        <a href="{{ route('pasien.dashboard') }}" class="nav-link {{ request()->routeIs('pasien.dashboard') ? 'active' : '' }}" style="{{ request()->routeIs('pasien.dashboard') ? 'background:linear-gradient(135deg,#06b6d4,#0ea5e9);box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);' : '' }}">
             <i class="bi bi-grid-1x2-fill"></i> Dashboard
         </a>
-        <a href="{{ route('pasien.profil.edit') }}" class="nav-link {{ request()->routeIs('pasien.profil.*') ? 'active' : '' }}" style="{{ request()->routeIs('pasien.profil.*') ? 'background:linear-gradient(135deg,#06b6d4,#0ea5e9);' : '' }}">
+        <a href="{{ route('pasien.profil.edit') }}" class="nav-link {{ request()->routeIs('pasien.profil.*') ? 'active' : '' }}" style="{{ request()->routeIs('pasien.profil.*') ? 'background:linear-gradient(135deg,#06b6d4,#0ea5e9);box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);' : '' }}">
             <i class="bi bi-person-fill"></i> Profil Saya
         </a>
-        <a href="{{ route('pasien.riwayat') }}" class="nav-link {{ request()->routeIs('pasien.riwayat') ? 'active' : '' }}" style="{{ request()->routeIs('pasien.riwayat') ? 'background:linear-gradient(135deg,#06b6d4,#0ea5e9);' : '' }}">
+        <a href="{{ route('pasien.riwayat') }}" class="nav-link {{ request()->routeIs('pasien.riwayat*') ? 'active' : '' }}" style="{{ request()->routeIs('pasien.riwayat*') ? 'background:linear-gradient(135deg,#06b6d4,#0ea5e9);box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);' : '' }}">
             <i class="bi bi-clipboard2-pulse-fill"></i> Riwayat Periksa
         </a>
-        <a href="{{ route('pasien.screening') }}" class="nav-link {{ request()->routeIs('pasien.screening') ? 'active' : '' }}" style="{{ request()->routeIs('pasien.screening') ? 'background:linear-gradient(135deg,#06b6d4,#0ea5e9);' : '' }}">
+        <a href="{{ route('pasien.screening') }}" class="nav-link {{ request()->routeIs('pasien.screening*') ? 'active' : '' }}" style="{{ request()->routeIs('pasien.screening*') ? 'background:linear-gradient(135deg,#06b6d4,#0ea5e9);box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);' : '' }}">
             <i class="bi bi-droplet-fill"></i> Screening Anemia
+        </a>
+        <a href="{{ route('pasien.health-updates.index') }}" class="nav-link {{ request()->routeIs('pasien.health-updates.*') ? 'active' : '' }}" style="{{ request()->routeIs('pasien.health-updates.*') ? 'background:linear-gradient(135deg,#06b6d4,#0ea5e9);box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);' : '' }}">
+            <i class="bi bi-heart-pulse-fill"></i> Update Kesehatan
         </a>
 
         <div class="nav-label mt-3">Akun</div>
@@ -57,7 +60,7 @@
                 <div class="fw-semibold" style="font-size:0.9rem;">{{ auth()->user()->name }}</div>
                 <div class="text-muted" style="font-size:0.75rem;">Pasien</div>
             </div>
-            <div class="user-avatar" style="background: linear-gradient(135deg, #06b6d4, #0ea5e9);">
+            <div class="user-avatar" style="background: linear-gradient(135deg, #06b6d4, #0ea5e9);box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);">
                 {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
             </div>
         </div>
@@ -66,8 +69,8 @@
     <!-- Content -->
     <div class="content-area fade-in">
         @if(session('success'))
-            <div class="alert alert-success alert-dismissible fade show d-flex align-items-center" role="alert" style="border-radius:12px;border:none;background:linear-gradient(135deg,#d1e7dd,#badbcc);">
-                <i class="bi bi-check-circle-fill me-2 text-success"></i>
+            <div class="alert alert-success alert-dismissible fade show d-flex align-items-center mb-4" role="alert">
+                <i class="bi bi-check-circle-fill me-3" style="font-size:1.25rem;"></i>
                 <div><strong>Berhasil!</strong> {{ session('success') }}</div>
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             </div>

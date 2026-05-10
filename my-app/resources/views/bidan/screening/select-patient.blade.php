@@ -1,22 +1,19 @@
 @extends('layouts.bidan')
 
-@section('title', 'Data Pasien - Klinik Mediva')
-@section('page-title', 'Data Pasien')
+@section('title', 'Pilih Pasien - Screening Anemia')
+@section('page-title', 'Screening Anemia')
 
 @section('content')
 <div class="custom-card">
-    <div class="card-header d-flex flex-wrap align-items-center justify-content-between gap-3">
-        <div class="d-flex align-items-center gap-2">
-            <i class="bi bi-people-fill text-primary" style="font-size:1.25rem;"></i>
-            <span>Daftar Pasien</span>
-        </div>
-        <a href="{{ route('bidan.patients.create') }}" class="btn btn-primary btn-sm">
-            <i class="bi bi-plus-lg me-1"></i> Tambah Pasien
-        </a>
+    <div class="card-header d-flex align-items-center gap-2">
+        <i class="bi bi-droplet-fill text-danger" style="font-size:1.25rem;"></i>
+        <span>Pilih Pasien untuk Screening Anemia</span>
     </div>
     <div class="card-body">
+        <p class="text-muted mb-4">Pilih pasien yang akan dilakukan screening anemia (pemeriksaan kadar hemoglobin)</p>
+
         <!-- Search -->
-        <form action="{{ route('bidan.patients.index') }}" method="GET" class="mb-4">
+        <form action="{{ route('bidan.screening.select-patient') }}" method="GET" class="mb-4">
             <div class="input-group" style="max-width:450px;">
                 <input type="text" name="search" class="form-control" placeholder="Cari nama atau NIK pasien..." value="{{ request('search') }}">
                 <button class="btn btn-primary" type="submit">
@@ -63,21 +60,9 @@
                             @endif
                         </td>
                         <td>
-                            <div class="d-flex gap-2">
-                                <a href="{{ route('bidan.patients.show', $patient->id) }}" class="btn btn-sm btn-outline-primary" title="Detail">
-                                    <i class="bi bi-eye"></i>
-                                </a>
-                                <a href="{{ route('bidan.patients.edit', $patient->id) }}" class="btn btn-sm btn-outline-warning" title="Edit">
-                                    <i class="bi bi-pencil"></i>
-                                </a>
-                                <form action="{{ route('bidan.patients.destroy', $patient->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus data pasien ini?');" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-outline-danger" title="Hapus">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
-                                </form>
-                            </div>
+                            <a href="{{ route('bidan.screening.create', $patient->id) }}" class="btn btn-sm btn-danger">
+                                <i class="bi bi-droplet me-1"></i> Screening Anemia
+                            </a>
                         </td>
                     </tr>
                     @empty
@@ -86,7 +71,7 @@
                             <div class="text-muted">
                                 <i class="bi bi-inbox" style="font-size:3rem;opacity:0.3;"></i>
                                 <p class="mt-3 mb-0 fw-semibold">Data pasien tidak ditemukan</p>
-                                <small>Silakan coba kata kunci pencarian lain atau tambah pasien baru</small>
+                                <small>Silakan coba kata kunci pencarian lain</small>
                             </div>
                         </td>
                     </tr>

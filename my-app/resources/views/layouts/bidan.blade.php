@@ -7,12 +7,12 @@
 <nav class="sidebar">
     <div class="sidebar-brand">
         <div class="d-flex align-items-center gap-3">
-            <div style="width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#6f42c1,#0d6efd);display:flex;align-items:center;justify-content:center;">
-                <i class="bi bi-heart-pulse-fill text-white"></i>
+            <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#F76D6C,#ff8f8e);display:flex;align-items:center;justify-content:center;box-shadow: 0 4px 12px rgba(247, 109, 108, 0.4);">
+                <i class="bi bi-heart-pulse-fill text-white" style="font-size:1.3rem;"></i>
             </div>
             <div>
                 <h4 class="text-white mb-0">Klinik Mediva</h4>
-                <small class="text-white-50">Sistem ANC & Anemia</small>
+                <small class="text-white-50">Sistem Manajemen ANC</small>
             </div>
         </div>
     </div>
@@ -22,15 +22,15 @@
         <a href="{{ route('bidan.dashboard') }}" class="nav-link {{ request()->routeIs('bidan.dashboard') ? 'active' : '' }}">
             <i class="bi bi-grid-1x2-fill"></i> Dashboard
         </a>
-        <a href="{{ route('bidan.patients.index') }}" class="nav-link {{ request()->routeIs('bidan.patients.*') ? 'active' : '' }}">
+        <a href="{{ route('bidan.patients.index') }}" class="nav-link {{ request()->routeIs('bidan.patients.*') && !request()->routeIs('bidan.anc.*') && !request()->routeIs('bidan.screening.*') ? 'active' : '' }}">
             <i class="bi bi-people-fill"></i> Data Pasien
         </a>
 
         <div class="nav-label mt-3">Pemeriksaan</div>
-        <a href="{{ route('bidan.patients.index') }}?action=anc" class="nav-link {{ request()->routeIs('bidan.anc.*') ? 'active' : '' }}">
+        <a href="{{ route('bidan.anc.select-patient') }}" class="nav-link {{ request()->routeIs('bidan.anc.*') ? 'active' : '' }}">
             <i class="bi bi-clipboard2-pulse-fill"></i> Pemeriksaan ANC
         </a>
-        <a href="{{ route('bidan.patients.index') }}?action=screening" class="nav-link {{ request()->routeIs('bidan.screening.*') ? 'active' : '' }}">
+        <a href="{{ route('bidan.screening.select-patient') }}" class="nav-link {{ request()->routeIs('bidan.screening.*') ? 'active' : '' }}">
             <i class="bi bi-droplet-fill"></i> Screening Anemia
         </a>
 
@@ -68,17 +68,17 @@
     <!-- Content -->
     <div class="content-area fade-in">
         @if(session('success'))
-            <div class="alert alert-success alert-dismissible fade show d-flex align-items-center" role="alert" style="border-radius:12px;border:none;background:linear-gradient(135deg,#d1e7dd,#badbcc);">
-                <i class="bi bi-check-circle-fill me-2 text-success"></i>
+            <div class="alert alert-success alert-dismissible fade show d-flex align-items-center mb-4" role="alert">
+                <i class="bi bi-check-circle-fill me-3" style="font-size:1.25rem;"></i>
                 <div><strong>Berhasil!</strong> {{ session('success') }}</div>
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             </div>
         @endif
 
         @if(session('error'))
-            <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center" role="alert" style="border-radius:12px;border:none;">
-                <i class="bi bi-exclamation-triangle-fill me-2"></i>
-                <div>{{ session('error') }}</div>
+            <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center mb-4" role="alert">
+                <i class="bi bi-exclamation-triangle-fill me-3" style="font-size:1.25rem;"></i>
+                <div><strong>Error!</strong> {{ session('error') }}</div>
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             </div>
         @endif

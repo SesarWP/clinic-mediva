@@ -4,6 +4,15 @@
 @section('page-title', 'Detail Pasien')
 
 @section('content')
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ route('bidan.dashboard') }}">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('bidan.patients.index') }}">Data Pasien</a></li>
+        <li class="breadcrumb-item active">{{ $patient->nama_lengkap }}</li>
+    </ol>
+</nav>
+
 <!-- Profil Pasien -->
 <div class="card custom-card mb-4">
     <div class="card-body">
@@ -24,6 +33,7 @@
             <div class="d-flex gap-2">
                 <a href="{{ route('bidan.anc.create', $patient->id) }}" class="btn btn-primary btn-sm"><i class="bi bi-clipboard-plus me-1"></i> ANC</a>
                 <a href="{{ route('bidan.screening.create', $patient->id) }}" class="btn btn-danger btn-sm"><i class="bi bi-droplet me-1"></i> Screening</a>
+                <a href="{{ route('bidan.health-updates.create', $patient->id) }}" class="btn btn-info btn-sm"><i class="bi bi-heart-pulse me-1"></i> Update Kesehatan</a>
                 <a href="{{ route('bidan.patients.edit', $patient->id) }}" class="btn btn-warning btn-sm"><i class="bi bi-pencil me-1"></i> Edit</a>
             </div>
         </div>
@@ -118,10 +128,11 @@
                             <td><small>{{ $anc->bidan->name }}</small></td>
                             <td>
                                 <div class="d-flex gap-1">
-                                    <a href="{{ route('bidan.anc.edit', $anc->id) }}" class="btn btn-sm btn-outline-warning"><i class="bi bi-pencil"></i></a>
+                                    <a href="{{ route('bidan.anc.show', $anc->id) }}" class="btn btn-sm btn-outline-primary" title="Lihat Detail"><i class="bi bi-eye"></i></a>
+                                    <a href="{{ route('bidan.anc.edit', $anc->id) }}" class="btn btn-sm btn-outline-warning" title="Edit"><i class="bi bi-pencil"></i></a>
                                     <form action="{{ route('bidan.anc.destroy', $anc->id) }}" method="POST" onsubmit="return confirm('Hapus data ANC ini?');">
                                         @csrf @method('DELETE')
-                                        <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                        <button class="btn btn-sm btn-outline-danger" title="Hapus"><i class="bi bi-trash"></i></button>
                                     </form>
                                 </div>
                             </td>
@@ -173,7 +184,94 @@
                             <td><small>{{ $screening->tindakan ?: '-' }}</small></td>
                             <td><small>{{ $screening->bidan->name }}</small></td>
                             <td>
-                                <a href="{{ route('bidan.screening.edit', $screening->id) }}" class="btn btn-sm btn-outline-warning"><i class="bi bi-pencil"></i></a>
+                                <div class="d-flex gap-1">
+                                    <a href="{{ route('bidan.screening.show', $screening->id) }}" class="btn btn-sm btn-outline-primary" title="Lihat Detail"><i class="bi bi-eye"></i></a>
+                                    <a href="{{ route('bidan.screening.edit', $screening->id) }}" class="btn btn-sm btn-outline-warning" title="Edit"><i class="bi bi-pencil"></i></a>
+                                    <form action="{{ route('bidan.screening.destroy', $screening->id) }}" method="POST" onsubmit="return confirm('Hapus data screening ini?');">
+                                        @csrf @method('DELETE')
+                                        <button class="btn btn-sm btn-outline-danger" title="Hapus"><i class="bi bi-trash"></i></button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        @endif
+    </div>
+</div>
+
+<!-- Riwayat Update Kesehatan -->
+<div class="card custom-card">
+    <div class="card-header d-flex align-items-center justify-content-between">
+        <span><i class="bi bi-heart-pulse-fill text-info me-2"></i> Update Kesehatan Harian/Mingguan</span>
+        <div class="d-flex gap-2">
+            <a href="{{ route('bidan.health-updates.index', $patient->id) }}" class="btn btn-outline-info btn-sm"><i class="bi bi-list-ul"></i> Lihat Semua</a>
+            <a href="{{ route('bidan.health-updates.create', $patient->id) }}" class="btn btn-info btn-sm"><i class="bi bi-plus-lg"></i> Tambah</a>
+        </div>
+    </div>
+    <div class="card-body p-0">
+        @php
+            $recentUpdates = $patient->healthUpdates()->take(5)->get();
+        @endphp
+        @if($recentUpdates->isEmpty())
+            <div class="text-center text-muted py-4">Belum ada update kesehatan</div>
+        @else
+            <div class="table-responsive">
+                <table class="table table-modern mb-0">
+                    <thead>
+                        <tr>
+                            <th>Tanggal</th>
+                            <th>Tipe</th>
+                            <th>Kondisi</th>
+                            <th>Tanda Vital</th>
+                            <th>Gejala</th>
+                            <th>Sumber</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($recentUpdates as $update)
+                        <tr class="{{ $update->has_gejala_bahaya ? 'table-danger' : '' }}">
+                            <td>{{ $update->tanggal_update->format('d/m/Y') }}</td>
+                            <td><span class="badge bg-{{ $update->tipe_update == 'harian' ? 'primary' : 'info' }}">{{ ucfirst($update->tipe_update) }}</span></td>
+                            <td><span class="badge bg-{{ $update->kondisi_color }}">{{ ucfirst($update->kondisi_umum) }}</span></td>
+                            <td>
+                                <small>
+                                    @if($update->suhu_tubuh)
+                                        <span class="{{ $update->suhu_tubuh >= 38 ? 'text-danger fw-bold' : '' }}">{{ $update->suhu_tubuh }}°C</span><br>
+                                    @endif
+                                    @if($update->tekanan_darah)
+                                        <span class="{{ $update->tekanan_darah_sistolik >= 140 ? 'text-danger fw-bold' : '' }}">{{ $update->tekanan_darah }} mmHg</span>
+                                    @endif
+                                    @if(!$update->suhu_tubuh && !$update->tekanan_darah) - @endif
+                                </small>
+                            </td>
+                            <td>
+                                @if(!empty($update->gejala_list))
+                                    <small>
+                                        @foreach(array_slice($update->gejala_list, 0, 2) as $gejala)
+                                            <span class="badge bg-warning text-dark">{{ $gejala }}</span>
+                                        @endforeach
+                                        @if(count($update->gejala_list) > 2)
+                                            <span class="badge bg-secondary">+{{ count($update->gejala_list) - 2 }}</span>
+                                        @endif
+                                    </small>
+                                @else
+                                    <small class="text-muted">-</small>
+                                @endif
+                            </td>
+                            <td><small>{{ ucfirst($update->sumber_input) }}</small></td>
+                            <td>
+                                <div class="d-flex gap-1">
+                                    <a href="{{ route('bidan.health-updates.show', $update->id) }}" class="btn btn-sm btn-outline-primary" title="Lihat Detail"><i class="bi bi-eye"></i></a>
+                                    <a href="{{ route('bidan.health-updates.edit', $update->id) }}" class="btn btn-sm btn-outline-warning" title="Edit"><i class="bi bi-pencil"></i></a>
+                                    <form action="{{ route('bidan.health-updates.destroy', $update->id) }}" method="POST" onsubmit="return confirm('Hapus update kesehatan ini?');">
+                                        @csrf @method('DELETE')
+                                        <button class="btn btn-sm btn-outline-danger" title="Hapus"><i class="bi bi-trash"></i></button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                         @endforeach
