@@ -49,14 +49,14 @@
 <!-- Quick Actions -->
 <div class="row g-3 mb-4">
     <div class="col-md-6">
-        <a href="{{ route('pasien.health-updates.create') }}" class="card custom-card text-decoration-none hover-shadow" style="border:2px solid #dc3545;">
+        <a href="{{ route('pasien.health-updates.index') }}" class="card custom-card text-decoration-none hover-shadow" style="border:2px solid #06b6d4;">
             <div class="card-body d-flex align-items-center gap-3">
-                <div style="width:56px;height:56px;border-radius:12px;background:#fee2e2;display:flex;align-items:center;justify-content:center;">
-                    <i class="bi bi-heart-pulse-fill text-danger" style="font-size:1.5rem;"></i>
+                <div style="width:56px;height:56px;border-radius:12px;background:#e0f2fe;display:flex;align-items:center;justify-content:center;">
+                    <i class="bi bi-journal-medical text-info" style="font-size:1.5rem; color: #06b6d4 !important;"></i>
                 </div>
                 <div>
-                    <h6 class="fw-bold mb-0 text-danger">Update Kesehatan Harian</h6>
-                    <small class="text-muted">Catat kondisi kesehatan Anda hari ini</small>
+                    <h6 class="fw-bold mb-0" style="color: #0369a1;">Buku KIA Interaktif</h6>
+                    <small class="text-muted">Isi ceklis kesehatan harian Anda</small>
                 </div>
             </div>
         </a>
@@ -65,11 +65,11 @@
         <a href="{{ route('pasien.health-updates.index') }}" class="card custom-card text-decoration-none hover-shadow" style="border:2px solid #0d6efd;">
             <div class="card-body d-flex align-items-center gap-3">
                 <div style="width:56px;height:56px;border-radius:12px;background:#f0f9ff;display:flex;align-items:center;justify-content:center;">
-                    <i class="bi bi-clock-history text-primary" style="font-size:1.5rem;"></i>
+                    <i class="bi bi-chat-dots-fill text-primary" style="font-size:1.5rem;"></i>
                 </div>
                 <div>
-                    <h6 class="fw-bold mb-0 text-primary">Riwayat Update Kesehatan</h6>
-                    <small class="text-muted">Lihat catatan kesehatan Anda</small>
+                    <h6 class="fw-bold mb-0 text-primary">Konsultasi Bidan</h6>
+                    <small class="text-muted">Tanyakan keluhan ringan Anda</small>
                 </div>
             </div>
         </a>
