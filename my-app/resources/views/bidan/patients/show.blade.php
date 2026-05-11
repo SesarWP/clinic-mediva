@@ -202,82 +202,23 @@
     </div>
 </div>
 
-<!-- Riwayat Update Kesehatan -->
+<!-- Riwayat Update Kesehatan (KIA) -->
 <div class="card custom-card">
     <div class="card-header d-flex align-items-center justify-content-between">
-        <span><i class="bi bi-heart-pulse-fill text-info me-2"></i> Update Kesehatan Harian/Mingguan</span>
-        <div class="d-flex gap-2">
-            <a href="{{ route('bidan.health-updates.index', $patient->id) }}" class="btn btn-outline-info btn-sm"><i class="bi bi-list-ul"></i> Lihat Semua</a>
-            <a href="{{ route('bidan.health-updates.create', $patient->id) }}" class="btn btn-info btn-sm"><i class="bi bi-plus-lg"></i> Tambah</a>
-        </div>
+        <span><i class="bi bi-journal-medical text-primary me-2"></i> Buku KIA Interaktif & Konsultasi</span>
+        <a href="{{ route('bidan.kia-checkins.index', $patient->id) }}" class="btn btn-primary btn-sm rounded-pill fw-semibold px-3">
+            <i class="bi bi-arrow-right-circle me-1"></i> Buka Manajemen KIA
+        </a>
     </div>
-    <div class="card-body p-0">
-        @php
-            $recentUpdates = $patient->healthUpdates()->take(5)->get();
-        @endphp
-        @if($recentUpdates->isEmpty())
-            <div class="text-center text-muted py-4">Belum ada update kesehatan</div>
-        @else
-            <div class="table-responsive">
-                <table class="table table-modern mb-0">
-                    <thead>
-                        <tr>
-                            <th>Tanggal</th>
-                            <th>Tipe</th>
-                            <th>Kondisi</th>
-                            <th>Tanda Vital</th>
-                            <th>Gejala</th>
-                            <th>Sumber</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($recentUpdates as $update)
-                        <tr class="{{ $update->has_gejala_bahaya ? 'table-danger' : '' }}">
-                            <td>{{ $update->tanggal_update->format('d/m/Y') }}</td>
-                            <td><span class="badge bg-{{ $update->tipe_update == 'harian' ? 'primary' : 'info' }}">{{ ucfirst($update->tipe_update) }}</span></td>
-                            <td><span class="badge bg-{{ $update->kondisi_color }}">{{ ucfirst($update->kondisi_umum) }}</span></td>
-                            <td>
-                                <small>
-                                    @if($update->suhu_tubuh)
-                                        <span class="{{ $update->suhu_tubuh >= 38 ? 'text-danger fw-bold' : '' }}">{{ $update->suhu_tubuh }}°C</span><br>
-                                    @endif
-                                    @if($update->tekanan_darah)
-                                        <span class="{{ $update->tekanan_darah_sistolik >= 140 ? 'text-danger fw-bold' : '' }}">{{ $update->tekanan_darah }} mmHg</span>
-                                    @endif
-                                    @if(!$update->suhu_tubuh && !$update->tekanan_darah) - @endif
-                                </small>
-                            </td>
-                            <td>
-                                @if(!empty($update->gejala_list))
-                                    <small>
-                                        @foreach(array_slice($update->gejala_list, 0, 2) as $gejala)
-                                            <span class="badge bg-warning text-dark">{{ $gejala }}</span>
-                                        @endforeach
-                                        @if(count($update->gejala_list) > 2)
-                                            <span class="badge bg-secondary">+{{ count($update->gejala_list) - 2 }}</span>
-                                        @endif
-                                    </small>
-                                @else
-                                    <small class="text-muted">-</small>
-                                @endif
-                            </td>
-                            <td><small>{{ ucfirst($update->sumber_input) }}</small></td>
-                            <td>
-                                <div class="d-flex gap-1">
-                                    <a href="{{ route('bidan.health-updates.show', $update->id) }}" class="btn btn-sm btn-outline-primary" title="Lihat Detail"><i class="bi bi-eye"></i></a>
-                                    <a href="{{ route('bidan.health-updates.edit', $update->id) }}" class="btn btn-sm btn-outline-warning" title="Edit"><i class="bi bi-pencil"></i></a>
-                                    <form action="{{ route('bidan.health-updates.destroy', $update->id) }}" method="POST" onsubmit="return confirm('Hapus update kesehatan ini?');">
-                                        @csrf @method('DELETE')
-                                        <button class="btn btn-sm btn-outline-danger" title="Hapus"><i class="bi bi-trash"></i></button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+    <div class="card-body p-4 text-center">
+        @if($patient->requires_clinic_visit)
+            <div class="alert alert-danger d-inline-block px-4 py-2 rounded-pill fw-bold mb-3">
+                <i class="bi bi-exclamation-triangle-fill me-2"></i> Wajib Kunjungan Klinik
             </div>
+            <p class="text-muted mb-0">Pasien ini telah ditandai untuk melakukan kunjungan langsung ke klinik.</p>
+        @else
+            <i class="bi bi-phone text-black-50 mb-3 d-block" style="font-size: 3rem;"></i>
+            <p class="text-muted mb-0">Kelola riwayat check-in gamifikasi Buku KIA harian pasien, tinjau tanda bahaya, dan balas konsultasi ringan pasien melalui Manajemen KIA.</p>
         @endif
     </div>
 </div>

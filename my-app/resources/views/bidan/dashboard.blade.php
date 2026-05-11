@@ -4,6 +4,40 @@
 @section('page-title', 'Dashboard')
 
 @section('content')
+<!-- Emergency Alerts (Red Flags) -->
+@if(isset($unresolvedAlerts) && $unresolvedAlerts->isNotEmpty())
+    <div class="card shadow-sm rounded-4 border-danger mb-4" style="background-color: #fef2f2;">
+        <div class="card-header bg-danger text-white rounded-top-4 py-3 d-flex justify-content-between align-items-center">
+            <h5 class="mb-0 fw-bold"><i class="bi bi-exclamation-triangle-fill me-2"></i> PERHATIAN: Ada Tanda Bahaya Pasien!</h5>
+            <span class="badge bg-white text-danger rounded-pill fs-6">{{ $unresolvedAlerts->count() }} Peringatan</span>
+        </div>
+        <div class="card-body p-0">
+            <div class="list-group list-group-flush rounded-bottom-4">
+                @foreach($unresolvedAlerts as $alert)
+                    <div class="list-group-item bg-transparent border-danger border-opacity-25 py-3 px-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
+                        <div>
+                            <h6 class="fw-bold text-danger mb-1">{{ $alert->patient->nama_lengkap }} <small class="text-muted fw-normal">({{ $alert->patient->usia }} th)</small></h6>
+                            <p class="mb-0 text-dark"><strong>Gejala:</strong> {{ $alert->red_flag_triggered }}</p>
+                            <small class="text-danger opacity-75"><i class="bi bi-clock me-1"></i> Dilaporkan: {{ $alert->created_at->diffForHumans() }}</small>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <a href="{{ route('bidan.kia-checkins.index', $alert->patient_id) }}" class="btn btn-outline-danger btn-sm rounded-pill fw-bold px-3">
+                                <i class="bi bi-search me-1"></i> Lihat Data KIA
+                            </a>
+                            <form action="{{ route('bidan.kia-alerts.resolve', $alert->id) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-danger btn-sm rounded-pill fw-bold px-3" onclick="return confirm('Tandai sudah ditangani?')">
+                                    <i class="bi bi-check2-circle me-1"></i> Tandai Selesai
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+@endif
+
 <!-- Stat Cards -->
 <div class="row g-4 mb-4">
     <div class="col-md-6 col-xl-3">

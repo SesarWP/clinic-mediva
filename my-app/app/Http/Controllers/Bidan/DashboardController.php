@@ -40,13 +40,17 @@ class DashboardController extends Controller
             ->orderBy('jadwal_kunjungan_berikutnya', 'asc')
             ->get();
 
+        // Unresolved KIA Alerts (Red Flags)
+        $unresolvedAlerts = \App\Models\KiaAlert::with('patient')->where('is_resolved', false)->latest()->get();
+
         return view('bidan.dashboard', compact(
             'totalPasien',
             'kunjunganHariIni',
             'pasienAnemia',
             'kunjunganHariIniList',
             'pasienRisikoTinggi',
-            'jadwalMendatang'
+            'jadwalMendatang',
+            'unresolvedAlerts'
         ));
     }
 }
