@@ -20,6 +20,7 @@ class Patient extends Model
         'abortus',
         'hpht',
         'taksiran_persalinan',
+        'requires_clinic_visit',
     ];
 
     protected $casts = [
@@ -53,11 +54,27 @@ class Patient extends Model
     }
 
     /**
-     * Update kesehatan harian/mingguan
+     * Update kesehatan harian/mingguan (Lama)
      */
     public function healthUpdates()
     {
         return $this->hasMany(HealthUpdate::class)->orderBy('tanggal_update', 'desc');
+    }
+
+    /**
+     * Buku KIA Gamified Check-ins
+     */
+    public function kiaCheckins()
+    {
+        return $this->hasMany(KiaCheckin::class)->orderBy('created_at', 'desc');
+    }
+
+    /**
+     * Buku KIA Gamified Alerts
+     */
+    public function kiaAlerts()
+    {
+        return $this->hasMany(KiaAlert::class)->orderBy('created_at', 'desc');
     }
 
     /**

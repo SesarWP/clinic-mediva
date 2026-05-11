@@ -56,7 +56,7 @@ Route::prefix('bidan')->middleware(['auth', 'role:bidan'])->name('bidan.')->grou
     Route::put('/screening/{screening}', [AnemiaScreeningController::class, 'update'])->name('screening.update');
     Route::delete('/screening/{screening}', [AnemiaScreeningController::class, 'destroy'])->name('screening.destroy');
 
-    // Update Kesehatan Harian/Mingguan
+    // Update Kesehatan Harian/Mingguan (Old logic fallback if any)
     Route::get('/patients/{patient}/health-updates', [BidanHealthUpdateController::class, 'index'])->name('health-updates.index');
     Route::get('/patients/{patient}/health-updates/create', [BidanHealthUpdateController::class, 'create'])->name('health-updates.create');
     Route::post('/patients/{patient}/health-updates', [BidanHealthUpdateController::class, 'store'])->name('health-updates.store');
@@ -64,6 +64,13 @@ Route::prefix('bidan')->middleware(['auth', 'role:bidan'])->name('bidan.')->grou
     Route::get('/health-updates/{update}/edit', [BidanHealthUpdateController::class, 'edit'])->name('health-updates.edit');
     Route::put('/health-updates/{update}', [BidanHealthUpdateController::class, 'update'])->name('health-updates.update');
     Route::delete('/health-updates/{update}', [BidanHealthUpdateController::class, 'destroy'])->name('health-updates.destroy');
+
+    // Gamified KIA Tracking (New)
+    Route::post('/kia-alerts/{alert}/resolve', [BidanHealthUpdateController::class, 'resolveAlert'])->name('kia-alerts.resolve');
+    Route::get('/patients/{patient}/kia-checkins', [BidanHealthUpdateController::class, 'kiaCheckins'])->name('kia-checkins.index');
+    Route::post('/kia-checkins/{checkin}/note', [BidanHealthUpdateController::class, 'storeKiaNote'])->name('kia-checkins.note');
+    Route::post('/patients/{patient}/consultations', [BidanHealthUpdateController::class, 'replyConsultation'])->name('consultations.reply');
+    Route::post('/patients/{patient}/require-visit', [BidanHealthUpdateController::class, 'requireClinicVisit'])->name('patients.require-visit');
 });
 
 // ============================================
@@ -85,9 +92,8 @@ Route::prefix('pasien')->middleware(['auth', 'role:pasien'])->name('pasien.')->g
     Route::get('/screening', [PasienDashboardController::class, 'screening'])->name('screening');
     Route::get('/screening/{screening}', [PasienDashboardController::class, 'screeningDetail'])->name('screening.detail');
 
-    // Update Kesehatan Harian/Mingguan
-    Route::get('/health-updates', [PasienHealthUpdateController::class, 'index'])->name('health-updates.index');
-    Route::get('/health-updates/create', [PasienHealthUpdateController::class, 'create'])->name('health-updates.create');
-    Route::post('/health-updates', [PasienHealthUpdateController::class, 'store'])->name('health-updates.store');
-    Route::get('/health-updates/{update}', [PasienHealthUpdateController::class, 'show'])->name('health-updates.show');
+    // Update Kesehatan Harian/Mingguan (Buku KIA Gamified)
+    Route::get('/health-updates', [\App\Http\Controllers\Pasien\KiaCheckinController::class, 'index'])->name('health-updates.index');
+    Route::post('/health-updates', [\App\Http\Controllers\Pasien\KiaCheckinController::class, 'store'])->name('health-updates.store');
+    Route::post('/health-updates/chat', [\App\Http\Controllers\Pasien\KiaCheckinController::class, 'storeChat'])->name('health-updates.chat');
 });
