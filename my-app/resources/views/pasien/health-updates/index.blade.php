@@ -9,22 +9,42 @@
         <div class="d-flex justify-content-between align-items-center mb-3">
             <div>
                 <h5 class="fw-bold mb-1">Update Kesehatan Saya</h5>
-                <small class="text-muted">Pantau kondisi kesehatan Anda secara rutin</small>
+                <small class="text-muted">Sampaikan keluhan atau kondisi Anda hari ini</small>
             </div>
-            <a href="{{ route('pasien.health-updates.create') }}" class="btn btn-danger">
-                <i class="bi bi-plus-lg me-1"></i> Update Sekarang
-            </a>
         </div>
+
+        <!-- Form Keluhan Cepat -->
+        <div class="card custom-card bg-off-white shadow-soft rounded-2xl border-0 mb-4">
+            <div class="card-body p-4">
+                <form action="{{ route('pasien.health-updates.store') }}" method="POST">
+                    @csrf
+                    <!-- Hidden Required Fields for HealthUpdateController -->
+                    <input type="hidden" name="tanggal_update" value="{{ date('Y-m-d') }}">
+                    <input type="hidden" name="tipe_update" value="harian">
+                    <input type="hidden" name="kondisi_umum" value="baik">
+                    
+                    <div class="mb-3">
+                        <label class="form-label fw-bold text-dark"><i class="bi bi-chat-left-text text-primary me-2"></i>Keluhan atau Catatan Hari Ini</label>
+                        <textarea name="keluhan" class="form-control rounded-3" rows="3" placeholder="Tuliskan keluhan atau pertanyaan Anda di sini... (Contoh: Saya merasa pusing dan mual sejak pagi)" required></textarea>
+                    </div>
+                    
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn fw-bold text-white shadow-sm" style="background: linear-gradient(135deg, #06b6d4, #0ea5e9); border-radius: 10px; padding: 10px 24px;">
+                            <i class="bi bi-send-fill me-2"></i>Kirim Keluhan
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <h5 class="fw-bold mb-3 mt-2 text-dark">Riwayat Update Kesehatan</h5>
 
         @if($updates->isEmpty())
             <div class="card custom-card">
                 <div class="card-body text-center py-5">
                     <i class="bi bi-heart-pulse" style="font-size:4rem;color:#ddd;"></i>
                     <h5 class="mt-3 text-muted">Belum Ada Update Kesehatan</h5>
-                    <p class="text-muted">Mulai catat kondisi kesehatan Anda secara rutin</p>
-                    <a href="{{ route('pasien.health-updates.create') }}" class="btn btn-danger mt-2">
-                        <i class="bi bi-plus-lg me-1"></i> Buat Update Pertama
-                    </a>
+                    <p class="text-muted">Mulai catat keluhan atau kondisi kesehatan Anda di atas.</p>
                 </div>
             </div>
         @else

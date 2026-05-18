@@ -31,6 +31,9 @@
         <a href="{{ route('pasien.screening') }}" class="nav-link {{ request()->routeIs('pasien.screening*') ? 'active' : '' }}" style="{{ request()->routeIs('pasien.screening*') ? 'background:linear-gradient(135deg,#06b6d4,#0ea5e9);box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);' : '' }}">
             <i class="bi bi-droplet-fill"></i> Screening Anemia
         </a>
+        <a href="{{ route('pasien.buku-kia') }}" class="nav-link {{ request()->routeIs('pasien.buku-kia') ? 'active' : '' }}" style="{{ request()->routeIs('pasien.buku-kia') ? 'background:linear-gradient(135deg,#06b6d4,#0ea5e9);box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);' : '' }}">
+            <i class="bi bi-journal-medical"></i> Buku KIA Interaktif
+        </a>
         <a href="{{ route('pasien.health-updates.index') }}" class="nav-link {{ request()->routeIs('pasien.health-updates.*') ? 'active' : '' }}" style="{{ request()->routeIs('pasien.health-updates.*') ? 'background:linear-gradient(135deg,#06b6d4,#0ea5e9);box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);' : '' }}">
             <i class="bi bi-heart-pulse-fill"></i> Update Kesehatan
         </a>

@@ -477,6 +477,104 @@
             background: var(--gray-400);
         }
 
+        /* Buku KIA Custom Styles */
+        .bg-off-white { background-color: #f4f7f6; }
+        .rounded-2xl { border-radius: 1rem; }
+        .shadow-soft { box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+        .hover-lift:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.05) !important; }
+        .transition-all { transition: all 0.3s ease; }
+        
+        .kia-tabs .nav-link {
+            color: #6c757d;
+            background: #fff;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        .kia-tabs .nav-link:hover {
+            color: #0ea5e9;
+            border-color: #0ea5e9;
+        }
+        .kia-tabs .nav-link.active {
+            color: #fff;
+            background: linear-gradient(135deg, #06b6d4, #0ea5e9);
+            border-color: transparent;
+            box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4) !important;
+        }
+        
+        .circular-progress {
+            position: relative;
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+        .circular-progress::before {
+            content: "";
+            position: absolute;
+            height: 84px;
+            width: 84px;
+            border-radius: 50%;
+            background-color: #fff;
+        }
+        .progress-value {
+            position: relative;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0b4d75;
+        }
+        
+        .custom-checkbox {
+            width: 1.5rem !important;
+            height: 1.5rem !important;
+            cursor: pointer;
+        }
+        
+        .danger-card {
+            border: 1px solid rgba(220, 53, 69, 0.2);
+            background: #fff;
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            transition: all 0.2s ease;
+        }
+        .danger-card:hover {
+            border-color: #dc3545;
+            background: #fef2f2;
+        }
+        
+        .alert-banner {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            padding: 30px 20px;
+        }
+        
+        /* iOS-style toggle */
+        .toggle-switch {
+            width: 3.5rem !important;
+            height: 1.8rem !important;
+            background-color: #e2e8f0;
+            border-color: #e2e8f0;
+            cursor: pointer;
+        }
+        .toggle-switch:checked {
+            background-color: #0ea5e9;
+            border-color: #0ea5e9;
+        }
+        
+        .pastel-card {
+            border-radius: 16px;
+            padding: 24px;
+            height: 100%;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+        .pastel-card:hover {
+            transform: translateY(-4px);
+        }
+
         @yield('extra-css')
     </style>
     @stack('styles')

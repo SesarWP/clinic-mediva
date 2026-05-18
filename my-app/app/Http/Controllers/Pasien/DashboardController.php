@@ -88,4 +88,24 @@ class DashboardController extends Controller
 
         return view('pasien.screening-detail', compact('patient', 'screening'));
     }
+
+    public function bukuKia()
+    {
+        $user = auth()->user();
+        $patient = $user->patient;
+
+        if (!$patient) {
+            return view('pasien.no-data');
+        }
+
+        // Determine trimester from HPHT
+        $trimester = 1;
+        if ($patient->hpht) {
+            $minggu = floor(\Carbon\Carbon::parse($patient->hpht)->diffInDays(now()) / 7);
+            if ($minggu > 13 && $minggu <= 27) $trimester = 2;
+            elseif ($minggu > 27) $trimester = 3;
+        }
+
+        return view('pasien.buku-kia', compact('patient', 'trimester'));
+    }
 }

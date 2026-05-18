@@ -101,12 +101,18 @@ class KiaCheckinController extends Controller
                 'is_resolved' => false
             ]);
             
+            if ($request->has('from_buku_kia')) {
+                return redirect()->route('pasien.buku-kia')->with('danger_alert', 'Tanda Bahaya Terdeteksi! Segera hubungi klinik.');
+            }
             return redirect()->route('pasien.health-updates.index')->with('danger_alert', 'Tanda Bahaya Terdeteksi!');
         }
 
         // Add fun fact to session so it can be shown once as a pop-up
         $edukasi = $knowledge['edukasi'][array_rand($knowledge['edukasi'])];
         
+        if ($request->has('from_buku_kia')) {
+            return redirect()->route('pasien.buku-kia')->with('success', 'Catatan harian berhasil disimpan!')->with('tahukah_ibu', $edukasi);
+        }
         return redirect()->route('pasien.health-updates.index')->with('tahukah_ibu', $edukasi);
     }
 

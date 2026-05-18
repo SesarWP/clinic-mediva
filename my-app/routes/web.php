@@ -92,8 +92,16 @@ Route::prefix('pasien')->middleware(['auth', 'role:pasien'])->name('pasien.')->g
     Route::get('/screening', [PasienDashboardController::class, 'screening'])->name('screening');
     Route::get('/screening/{screening}', [PasienDashboardController::class, 'screeningDetail'])->name('screening.detail');
 
-    // Update Kesehatan Harian/Mingguan (Buku KIA Gamified)
-    Route::get('/health-updates', [\App\Http\Controllers\Pasien\KiaCheckinController::class, 'index'])->name('health-updates.index');
-    Route::post('/health-updates', [\App\Http\Controllers\Pasien\KiaCheckinController::class, 'store'])->name('health-updates.store');
+    // Buku KIA Interaktif
+    Route::get('/buku-kia', [PasienDashboardController::class, 'bukuKia'])->name('buku-kia');
+    Route::post('/buku-kia/store', [\App\Http\Controllers\Pasien\KiaCheckinController::class, 'store'])->name('buku-kia.store');
+
+    // Update Kesehatan (Menggunakan HealthUpdateController)
+    Route::get('/health-updates', [\App\Http\Controllers\Pasien\HealthUpdateController::class, 'index'])->name('health-updates.index');
+    Route::get('/health-updates/create', [\App\Http\Controllers\Pasien\HealthUpdateController::class, 'create'])->name('health-updates.create');
+    Route::post('/health-updates', [\App\Http\Controllers\Pasien\HealthUpdateController::class, 'store'])->name('health-updates.store');
+    Route::get('/health-updates/{update}', [\App\Http\Controllers\Pasien\HealthUpdateController::class, 'show'])->name('health-updates.show');
+    
+    // Tanya Bidan Chat
     Route::post('/health-updates/chat', [\App\Http\Controllers\Pasien\KiaCheckinController::class, 'storeChat'])->name('health-updates.chat');
 });
