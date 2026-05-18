@@ -5,7 +5,8 @@
 
 @section('content')
 <div class="row">
-    <div class="col-12">
+    <!-- Left Column: Update Kesehatan -->
+    <div class="col-lg-8 mb-4">
         <div class="d-flex justify-content-between align-items-center mb-3">
             <div>
                 <h5 class="fw-bold mb-1">Update Kesehatan Saya</h5>
@@ -157,5 +158,80 @@
             </div>
         @endif
     </div>
+
+    <!-- Right Column: Chat Bidan -->
+    <div class="col-lg-4">
+        <div class="card shadow-sm rounded-4 border-0 mb-4 sticky-top" style="top: 20px;">
+            <div class="card-header bg-white border-bottom-0 pt-4 pb-0 px-4 d-flex justify-content-between align-items-center">
+                <h5 class="fw-bold mb-0 text-dark"><i class="bi bi-chat-dots-fill text-primary me-2"></i>Tanya Bidan</h5>
+                <span class="badge {{ isset($messageCount) && $messageCount >= 3 ? 'bg-danger' : 'bg-secondary' }} rounded-pill">
+                    Sesi: {{ $messageCount ?? 0 }}/3
+                </span>
+            </div>
+            <div class="card-body p-4">
+                <!-- Chat Messages -->
+                <div class="chat-container mb-4" style="max-height: 400px; overflow-y: auto; scroll-behavior: smooth;">
+                    @forelse($consultations ?? [] as $chat)
+                        @if($chat->sender_role == 'pasien')
+                            <!-- Pasien Message (Right) -->
+                            <div class="d-flex justify-content-end mb-3">
+                                <div class="bg-primary text-white p-3 rounded-4 rounded-bottom-0 shadow-sm" style="max-width: 85%;">
+                                    {{ $chat->message }}
+                                    <div class="text-end text-white-50 mt-1" style="font-size: 0.7rem;">{{ $chat->created_at->format('H:i') }}</div>
+                                </div>
+                            </div>
+                        @else
+                            <!-- Bidan Message (Left) -->
+                            <div class="d-flex justify-content-start mb-3">
+                                <div class="bg-light text-dark p-3 rounded-4 rounded-bottom-0 shadow-sm border" style="max-width: 85%;">
+                                    <div class="fw-bold text-primary mb-1" style="font-size: 0.8rem;">Bidan Klinik Mediva</div>
+                                    {{ $chat->message }}
+                                    <div class="text-start text-muted mt-1" style="font-size: 0.7rem;">{{ $chat->created_at->format('H:i') }}</div>
+                                </div>
+                            </div>
+                        @endif
+                    @empty
+                        <div class="text-center text-muted my-4">
+                            <i class="bi bi-chat-heart text-black-50 mb-2 d-block" style="font-size: 2rem;"></i>
+                            <small>Punya pertanyaan seputar keluhan ringan? Tanyakan di sini.</small>
+                        </div>
+                    @endforelse
+                </div>
+
+                <!-- Chat Input -->
+                @if(!isset($messageCount) || $messageCount < 3)
+                <form action="{{ route('pasien.health-updates.chat') }}" method="POST">
+                    @csrf
+                    <div class="input-group shadow-sm rounded-pill">
+                        <input type="text" name="message" class="form-control bg-light border-0 rounded-start-pill ps-4 py-2" placeholder="Ketik pesan..." required>
+                        <button class="btn btn-primary rounded-end-pill px-3 py-2" type="submit">
+                            <i class="bi bi-send-fill"></i>
+                        </button>
+                    </div>
+                </form>
+                <div class="text-center mt-3">
+                    <small class="text-muted" style="font-size: 0.75rem;"><i class="bi bi-info-circle me-1"></i>Hanya untuk pertanyaan ringan. Kondisi darurat segera ke klinik.</small>
+                </div>
+                @else
+                <div class="alert alert-warning border-warning border-start border-4 rounded-3 text-center mb-0" style="font-size: 0.85rem;">
+                    <i class="bi bi-lock-fill d-block mb-1 fs-4"></i>
+                    <strong>Sesi habis.</strong> Kunjungi klinik untuk pemeriksaan.
+                </div>
+                @endif
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Scroll chat to bottom
+        var chatContainer = document.querySelector('.chat-container');
+        if (chatContainer) {
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+    });
+</script>
+@endpush

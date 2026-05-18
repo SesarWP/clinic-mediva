@@ -18,8 +18,10 @@ class HealthUpdateController extends Controller
         }
 
         $updates = $patient->healthUpdates()->paginate(20);
+        $consultations = \App\Models\Consultation::where('patient_id', $patient->id)->orderBy('created_at', 'asc')->get();
+        $messageCount = \App\Models\Consultation::where('patient_id', $patient->id)->where('sender_role', 'pasien')->count();
         
-        return view('pasien.health-updates.index', compact('patient', 'updates'));
+        return view('pasien.health-updates.index', compact('patient', 'updates', 'consultations', 'messageCount'));
     }
 
     public function create()
