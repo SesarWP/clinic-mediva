@@ -63,9 +63,13 @@
                 <div class="fw-semibold" style="font-size:0.9rem;">{{ auth()->user()->name }}</div>
                 <div class="text-muted" style="font-size:0.75rem;">Pasien</div>
             </div>
-            <div class="user-avatar" style="background: linear-gradient(135deg, #06b6d4, #0ea5e9);box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);">
-                {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
-            </div>
+            @if(auth()->user()->profile_photo_path)
+                <img src="{{ asset('storage/' . auth()->user()->profile_photo_path) }}" alt="User Avatar" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);">
+            @else
+                <div class="user-avatar" style="width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #06b6d4, #0ea5e9);box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3); color: white; font-weight: bold;">
+                    {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
+                </div>
+            @endif
         </div>
     </header>
 
