@@ -48,8 +48,12 @@ class ProfileController extends Controller
 
             // Store new photo
             $path = $request->file('profile_photo')->store('profile-photos', 'public');
-            $user->update(['profile_photo_path' => $path]);
+            $user->profile_photo_path = $path;
         }
+
+        // Update user name as well so it reflects in the top right navbar
+        $user->name = $validated['nama_lengkap'];
+        $user->save();
 
         $patient->update([
             'nama_lengkap' => $validated['nama_lengkap'],
