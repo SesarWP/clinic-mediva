@@ -14,7 +14,8 @@ class CheckRole
     public function handle(Request $request, Closure $next, string ...$roles): Response
     {
         if (!auth()->check()) {
-            return redirect()->route('home');
+            session()->flash('warning', 'Sesi Anda telah berakhir atau Anda belum login. Silakan login kembali untuk melanjutkan keamanan data Anda.');
+            return redirect()->route('login');
         }
 
         if (!in_array(auth()->user()->role, $roles)) {

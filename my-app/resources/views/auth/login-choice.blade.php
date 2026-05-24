@@ -200,6 +200,15 @@
         <h1>Klinik Mediva Ngawi</h1>
         <p class="subtitle">Sistem Monitoring ANC & Screening Anemia Ibu Hamil</p>
 
+        @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show text-start mb-4" role="alert"
+                 style="border-radius: 12px; border: 2px solid #6ee7b7; background: #ecfdf5; color: #065f46; font-size: 0.9rem; font-weight: 500; padding: 14px 16px;">
+                <i class="bi bi-check-circle-fill me-2" style="color: #10b981;"></i>
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+
         @if (session('warning'))
             <div class="alert alert-warning alert-dismissible fade show text-start mb-4" role="alert" style="border-radius: 12px; font-weight: 500;">
                 <i class="bi bi-exclamation-triangle-fill me-2"></i> {{ session('warning') }}
