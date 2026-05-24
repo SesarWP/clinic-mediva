@@ -31,9 +31,6 @@
                 </div>
             </div>
             <div class="d-flex gap-2">
-                <a href="{{ route('bidan.anc.create', $patient->id) }}" class="btn btn-primary btn-sm"><i class="bi bi-clipboard-plus me-1"></i> ANC</a>
-                <a href="{{ route('bidan.screening.create', $patient->id) }}" class="btn btn-danger btn-sm"><i class="bi bi-droplet me-1"></i> Screening</a>
-                <a href="{{ route('bidan.health-updates.create', $patient->id) }}" class="btn btn-info btn-sm"><i class="bi bi-heart-pulse me-1"></i> Update Kesehatan</a>
                 <a href="{{ route('bidan.patients.edit', $patient->id) }}" class="btn btn-warning btn-sm"><i class="bi bi-pencil me-1"></i> Edit</a>
             </div>
         </div>
@@ -146,7 +143,7 @@
 </div>
 
 <!-- Riwayat Screening Anemia -->
-<div class="card custom-card">
+<div class="card custom-card mb-4">
     <div class="card-header d-flex align-items-center justify-content-between">
         <span><i class="bi bi-droplet-fill text-danger me-2"></i> Riwayat Screening Anemia</span>
         <a href="{{ route('bidan.screening.create', $patient->id) }}" class="btn btn-danger btn-sm"><i class="bi bi-plus-lg"></i> Tambah</a>
@@ -202,8 +199,67 @@
     </div>
 </div>
 
+<!-- Riwayat Catatan Kesehatan -->
+<div class="card custom-card mb-4">
+    <div class="card-header d-flex align-items-center justify-content-between">
+        <span><i class="bi bi-notes-medical text-info me-2"></i> Riwayat Catatan Kesehatan</span>
+        <a href="{{ route('bidan.health-updates.create', $patient->id) }}" class="btn btn-info btn-sm text-white"><i class="bi bi-plus-lg"></i> Tambah</a>
+    </div>
+    <div class="card-body p-0">
+        @if($patient->healthUpdates->isEmpty())
+            <div class="text-center text-muted py-4">Belum ada catatan kesehatan</div>
+        @else
+            <div class="table-responsive">
+                <table class="table table-modern table-hover mb-0">
+                    <thead>
+                        <tr>
+                            <th>Tanggal</th>
+                            <th>Kondisi Umum</th>
+                            <th>Keluhan Utama</th>
+                            <th>Sumber / Bidan</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($patient->healthUpdates as $update)
+                        <tr>
+                            <td>{{ $update->tanggal_update->format('d/m/Y') }}</td>
+                            <td>
+                                @php
+                                    $kondisiColor = match($update->kondisi_umum ?? '') {
+                                        'baik'   => 'success',
+                                        'cukup'  => 'warning',
+                                        'buruk'  => 'danger',
+                                        default  => 'secondary',
+                                    };
+                                @endphp
+                                <span class="badge bg-{{ $kondisiColor }} badge-risk">
+                                    {{ ucfirst($update->kondisi_umum ?? '-') }}
+                                </span>
+                            </td>
+                            <td><small>{{ Str::limit($update->keluhan ?? '-', 60) }}</small></td>
+                            <td><small>{{ $update->bidan->name ?? 'Pasien' }}</small></td>
+                            <td>
+                                <div class="d-flex gap-1">
+                                    <a href="{{ route('bidan.health-updates.show', $update->id) }}" class="btn btn-sm btn-outline-primary" title="Lihat Detail"><i class="bi bi-eye"></i></a>
+                                    <a href="{{ route('bidan.health-updates.edit', $update->id) }}" class="btn btn-sm btn-outline-warning" title="Edit"><i class="bi bi-pencil"></i></a>
+                                    <form action="{{ route('bidan.health-updates.destroy', $update->id) }}" method="POST" onsubmit="return confirm('Hapus catatan kesehatan ini?');" class="d-inline">
+                                        @csrf @method('DELETE')
+                                        <button class="btn btn-sm btn-outline-danger" title="Hapus"><i class="bi bi-trash"></i></button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        @endif
+    </div>
+</div>
+
 <!-- Riwayat Update Kesehatan (KIA) -->
-<div class="card custom-card">
+<div class="card custom-card mb-4">
     <div class="card-header d-flex align-items-center justify-content-between">
         <span><i class="bi bi-journal-medical text-primary me-2"></i> Buku KIA Interaktif & Konsultasi</span>
         <a href="{{ route('bidan.kia-checkins.index', $patient->id) }}" class="btn btn-primary btn-sm rounded-pill fw-semibold px-3">
