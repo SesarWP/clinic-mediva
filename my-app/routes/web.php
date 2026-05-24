@@ -93,7 +93,8 @@ Route::prefix('pasien')->middleware(['auth', 'role:pasien'])->name('pasien.')->g
     Route::get('/screening/{screening}', [PasienDashboardController::class, 'screeningDetail'])->name('screening.detail');
 
     // Buku KIA Interaktif
-    Route::get('/buku-kia', [PasienDashboardController::class, 'bukuKia'])->name('buku-kia');
+    Route::get('/buku-kia', [PasienDashboardController::class, 'bukuKiaIndex'])->name('buku-kia.index');
+    Route::get('/buku-kia/trimester1', [PasienDashboardController::class, 'bukuKia'])->name('buku-kia');
     Route::get('/buku-kia/trimester2', [PasienDashboardController::class, 'bukuKiaTrimester2'])->name('buku-kia.trimester2');
     Route::get('/buku-kia/trimester3', [PasienDashboardController::class, 'bukuKiaTrimester3'])->name('buku-kia.trimester3');
     Route::post('/buku-kia/store', [\App\Http\Controllers\Pasien\KiaCheckinController::class, 'store'])->name('buku-kia.store');

@@ -19,6 +19,9 @@
 
         <!-- Navigasi Antar Trimester -->
         <div class="d-flex gap-2 mb-4 flex-wrap">
+            <a href="{{ route('pasien.buku-kia.index') }}" class="btn btn-sm btn-outline-secondary rounded-pill px-3">
+                <i class="bi bi-house me-1"></i> Beranda KIA
+            </a>
             <a href="{{ route('pasien.buku-kia') }}" class="btn btn-sm btn-outline-secondary rounded-pill px-3">
                 <i class="bi bi-arrow-left me-1"></i> Trimester 1
             </a>

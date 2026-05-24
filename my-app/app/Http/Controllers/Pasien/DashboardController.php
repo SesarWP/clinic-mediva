@@ -89,6 +89,18 @@ class DashboardController extends Controller
         return view('pasien.screening-detail', compact('patient', 'screening'));
     }
 
+    public function bukuKiaIndex()
+    {
+        $user = auth()->user();
+        $patient = $user->patient;
+
+        if (!$patient) {
+            return view('pasien.no-data');
+        }
+
+        return view('pasien.buku-kia-index', compact('patient'));
+    }
+
     public function bukuKia()
     {
         $user = auth()->user();

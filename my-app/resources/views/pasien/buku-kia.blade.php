@@ -19,6 +19,9 @@
 
         <!-- Navigasi Antar Trimester -->
         <div class="d-flex gap-2 mb-4 flex-wrap">
+            <a href="{{ route('pasien.buku-kia.index') }}" class="btn btn-sm btn-outline-secondary rounded-pill px-3">
+                <i class="bi bi-house me-1"></i> Beranda KIA
+            </a>
             <span class="btn btn-sm rounded-pill px-3 text-white fw-semibold" style="background:#0375C4; cursor:default;">
                 Trimester 1 (Bulan 1–3)
             </span>
@@ -60,20 +63,8 @@
                     
                     <!-- TAB 1: Perkembangan Janin -->
                     <div class="tab-pane fade show active" id="janin" role="tabpanel" aria-labelledby="janin-tab">
-                        <!-- 1000 HPK Card -->
-                        <div class="card border-0 shadow-sm rounded-4 mb-4" style="background: linear-gradient(135deg, #ffffff, #f8f9fa);">
-                            <div class="card-body p-4">
-                                <div class="d-flex align-items-center gap-3 mb-3">
-                                    <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width: 50px; height: 50px;">
-                                        <i class="bi bi-star-fill fs-4"></i>
-                                    </div>
-                                    <h5 class="fw-bold mb-0 text-primary">Pentingnya 1000 Hari Pertama Kehidupan (HPK)</h5>
-                                </div>
-                                <p class="text-muted mb-0">Masa 1000 HPK dimulai sejak janin di dalam kandungan (270 hari) hingga anak berusia 2 tahun (730 hari). Ini adalah masa emas (golden period) di mana otak dan fisik anak berkembang paling pesat. Nutrisi dan perawatan yang baik sangat penting untuk mencegah stunting dan memastikan masa depan cerah bagi si kecil.</p>
-                            </div>
-                        </div>
 
-                        <h5 class="fw-bold text-dark mb-4">Ukuran Janin Anda (Bulan 1-3)</h5>
+                        <h5 class="fw-bold text-dark mb-4">Ukuran Janin Anda (Bulan 1–3)</h5>
                         <!-- Grid Ukuran Janin -->
                         <div class="row g-3 g-md-4 mb-5">
                             <div class="col-12 col-md-6 col-lg-4">
@@ -99,32 +90,7 @@
                             </div>
                         </div>
 
-                        <!-- Perkembangan Otak -->
-                        <div class="card border-0 shadow-sm rounded-4">
-                            <div class="card-body p-4 text-center">
-                                <h5 class="fw-bold text-dark mb-4">Perkembangan Otak Anak</h5>
-                                <div class="row align-items-center justify-content-center g-4">
-                                    <div class="col-sm-4">
-                                        <div class="circular-progress" data-percentage="25">
-                                            <span class="progress-value">25%</span>
-                                        </div>
-                                        <div class="mt-3 fw-semibold">Saat Lahir</div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="circular-progress" data-percentage="70">
-                                            <span class="progress-value">70%</span>
-                                        </div>
-                                        <div class="mt-3 fw-semibold">Usia 1 Tahun</div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="circular-progress" data-percentage="85">
-                                            <span class="progress-value">85%</span>
-                                        </div>
-                                        <div class="mt-3 fw-semibold">Usia 3 Tahun</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- Perkembangan Otak dipindahkan ke Beranda KIA -->
                     </div>
 
                     <!-- TAB 2: Nutrisi & Perawatan -->
@@ -156,7 +122,7 @@
                                         <span style="font-size:2.5rem;line-height:1;">🥚🍗</span>
                                     </div>
                                     <h6 class="fw-bold" style="font-size:0.85rem;">Protein Hewani & Nabati</h6>
-                                    <span class="badge rounded-pill" style="background:#0375C4;">4 porsi</span>
+                                    <span class="badge rounded-pill" style="background:#0375C4;">4 porsi Hewani + 4 porsi Nabati</span>
                                 </div>
                             </div>
                             <div class="col-6 col-md-3">
@@ -176,6 +142,27 @@
                                     <h6 class="fw-bold" style="font-size:0.85rem;">Buah-buahan</h6>
                                     <span class="badge rounded-pill" style="background:#DC3545;">4 porsi</span>
                                 </div>
+                            </div>
+                        </div>
+
+                        <!-- Jurnal TTD -->
+                        <div class="card border-0 shadow-sm rounded-4 mb-4 bg-white">
+                            <div class="card-body p-4">
+                                <h5 class="fw-bold text-dark mb-3"><i class="bi bi-bandaid-fill text-success me-2"></i>Perawatan Sehari-hari</h5>
+                                <ul class="list-unstyled mb-0 d-flex flex-column gap-2">
+                                    <li class="d-flex align-items-start gap-2">
+                                        <i class="bi bi-check-circle-fill mt-1 flex-shrink-0" style="color:#28A745;"></i>
+                                        <span>Menjaga kebersihan diri: mandi 2x sehari dan ganti pakaian dalam secara rutin.</span>
+                                    </li>
+                                    <li class="d-flex align-items-start gap-2">
+                                        <i class="bi bi-check-circle-fill mt-1 flex-shrink-0" style="color:#28A745;"></i>
+                                        <span>Cuci tangan dengan sabun dan air mengalir sebelum makan, setelah ke toilet, dan setelah beraktivitas.</span>
+                                    </li>
+                                    <li class="d-flex align-items-start gap-2">
+                                        <i class="bi bi-check-circle-fill mt-1 flex-shrink-0" style="color:#28A745;"></i>
+                                        <span>Hubungan suami istri boleh dilakukan selama kondisi kehamilan sehat dan tidak ada larangan dari bidan/dokter.</span>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
 
@@ -332,6 +319,47 @@
                                                 <input class="form-check-input toggle-switch" type="checkbox" name="flag_6" id="flag_6" value="1">
                                             </div>
                                         </div>
+
+                                        <div class="mt-2 mb-3 px-1">
+                                            <span class="text-muted fw-semibold" style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.8px;">Masalah Lain Pada Kehamilan</span>
+                                        </div>
+
+                                        <div class="d-flex justify-content-between align-items-center p-3 mb-3 bg-light rounded-3 kia-switch-row">
+                                            <label class="fw-semibold mb-0" for="flag_7">
+                                                Batuk lama (lebih dari 2 minggu)?
+                                                <span class="badge ms-2 rounded-pill" style="background:#0375C4;font-size:0.68rem;">Masalah Lain</span>
+                                            </label>
+                                            <div class="form-check form-switch m-0">
+                                                <input class="form-check-input toggle-switch" type="checkbox" name="flag_7" id="flag_7" value="1">
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center p-3 mb-3 bg-light rounded-3 kia-switch-row">
+                                            <label class="fw-semibold mb-0" for="flag_8">
+                                                Diare berulang?
+                                                <span class="badge ms-2 rounded-pill" style="background:#0375C4;font-size:0.68rem;">Masalah Lain</span>
+                                            </label>
+                                            <div class="form-check form-switch m-0">
+                                                <input class="form-check-input toggle-switch" type="checkbox" name="flag_8" id="flag_8" value="1">
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center p-3 mb-3 bg-light rounded-3 kia-switch-row">
+                                            <label class="fw-semibold mb-0" for="flag_9">
+                                                Jantung berdebar-debar atau nyeri di dada?
+                                                <span class="badge ms-2 rounded-pill" style="background:#0375C4;font-size:0.68rem;">Masalah Lain</span>
+                                            </label>
+                                            <div class="form-check form-switch m-0">
+                                                <input class="form-check-input toggle-switch" type="checkbox" name="flag_9" id="flag_9" value="1">
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center p-3 mb-3 bg-light rounded-3 kia-switch-row">
+                                            <label class="fw-semibold mb-0" for="flag_10">
+                                                Sulit tidur dan cemas berlebihan?
+                                                <span class="badge ms-2 rounded-pill" style="background:#0375C4;font-size:0.68rem;">Masalah Lain</span>
+                                            </label>
+                                            <div class="form-check form-switch m-0">
+                                                <input class="form-check-input toggle-switch" type="checkbox" name="flag_10" id="flag_10" value="1">
+                                            </div>
+                                        </div>
                                     </div>
                                     
                                     <div class="d-grid mt-4">
@@ -400,7 +428,7 @@
                                             <tr>
                                                 <td class="text-center">3</td>
                                                 <td>-</td>
-                                                <td>Persiapan Persalinan</td>
+                                                <td>Adaptasi Tubuh &amp; Mengatasi Mual Muntah (Emesis)</td>
                                                 <td class="text-center"><span class="badge bg-light text-dark border">Belum Hadir</span></td>
                                             </tr>
                                         </tbody>
