@@ -167,9 +167,18 @@
 </head>
 <body>
     <div class="login-container">
-        <a href="{{ route('home') }}" class="back-link">
+        <a href="{{ route('login') }}" class="back-link">
             <i class="bi bi-arrow-left"></i> Kembali
         </a>
+
+        @if(session('warning'))
+            <div class="alert alert-warning alert-dismissible fade show mb-4" role="alert"
+                 style="border-radius: 12px; border: 2px solid #fbbf24; background: #fffbeb; color: #92400e; font-size: 0.9rem; font-weight: 500; padding: 14px 16px;">
+                <i class="bi bi-exclamation-triangle-fill me-2" style="color: #f59e0b;"></i>
+                {{ session('warning') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
 
         <div class="login-box">
             <div class="login-icon">
@@ -213,5 +222,6 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
