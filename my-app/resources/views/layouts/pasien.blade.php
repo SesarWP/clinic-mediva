@@ -22,11 +22,11 @@
         <a href="{{ route('pasien.dashboard') }}" class="nav-link {{ request()->routeIs('pasien.dashboard') ? 'active' : '' }}" style="{{ request()->routeIs('pasien.dashboard') ? 'background:linear-gradient(135deg,#06b6d4,#0ea5e9);box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);' : '' }}">
             <i class="bi bi-grid-1x2-fill"></i> Dashboard
         </a>
-        <a href="{{ route('pasien.buku-kia.index') }}" class="nav-link {{ request()->routeIs('pasien.buku-kia*') ? 'active' : '' }}" style="{{ request()->routeIs('pasien.buku-kia*') ? 'background:linear-gradient(135deg,#06b6d4,#0ea5e9);box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);' : '' }}">
+        <a href="{{ route('pasien.buku-kia.index') }}" class="nav-link {{ request()->routeIs('pasien.buku-kia.index') || request()->routeIs('pasien.buku-kia') || request()->routeIs('pasien.buku-kia.*') ? 'active' : '' }}" style="{{ request()->routeIs('pasien.buku-kia.index') || request()->routeIs('pasien.buku-kia') || request()->routeIs('pasien.buku-kia.*') ? 'background:linear-gradient(135deg,#06b6d4,#0ea5e9);box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);' : '' }}">
             <i class="bi bi-journal-medical"></i> Buku KIA Interaktif
         </a>
         <a href="{{ route('pasien.health-updates.index') }}" class="nav-link {{ request()->routeIs('pasien.health-updates.*') ? 'active' : '' }}" style="{{ request()->routeIs('pasien.health-updates.*') ? 'background:linear-gradient(135deg,#06b6d4,#0ea5e9);box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);' : '' }}">
-            <i class="bi bi-heart-pulse-fill"></i> Update Kesehatan
+            <i class="bi bi-heart-pulse-fill"></i> Catatan Kesehatan
         </a>
         <a href="{{ route('pasien.screening') }}" class="nav-link {{ request()->routeIs('pasien.screening*') ? 'active' : '' }}" style="{{ request()->routeIs('pasien.screening*') ? 'background:linear-gradient(135deg,#06b6d4,#0ea5e9);box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);' : '' }}">
             <i class="bi bi-droplet-fill"></i> Screening Anemia

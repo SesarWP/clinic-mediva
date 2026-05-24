@@ -1,7 +1,7 @@
 @extends('layouts.pasien')
 
-@section('title', 'Riwayat Update Kesehatan - Klinik Mediva')
-@section('page-title', 'Riwayat Update Kesehatan')
+@section('title', 'Catatan Kesehatan - Klinik Mediva')
+@section('page-title', 'Catatan Kesehatan dan Konsultasi')
 
 @section('content')
 <div class="row">
@@ -9,7 +9,7 @@
     <div class="col-lg-8 mb-4">
         <div class="d-flex justify-content-between align-items-center mb-3">
             <div>
-                <h5 class="fw-bold mb-1">Update Kesehatan Saya</h5>
+                <h5 class="fw-bold mb-1">Catatan Kesehatan Saya</h5>
                 <small class="text-muted">Sampaikan keluhan atau kondisi Anda hari ini</small>
             </div>
         </div>
@@ -38,13 +38,13 @@
             </div>
         </div>
 
-        <h5 class="fw-bold mb-3 mt-2 text-dark">Riwayat Update Kesehatan</h5>
+        <h5 class="fw-bold mb-3 mt-2 text-dark">Riwayat Catatan Kesehatan</h5>
 
         @if($updates->isEmpty())
             <div class="card custom-card">
                 <div class="card-body text-center py-5">
                     <i class="bi bi-heart-pulse" style="font-size:4rem;color:#ddd;"></i>
-                    <h5 class="mt-3 text-muted">Belum Ada Update Kesehatan</h5>
+                    <h5 class="mt-3 text-muted">Belum Ada Catatan Kesehatan</h5>
                     <p class="text-muted">Mulai catat keluhan atau kondisi kesehatan Anda di atas.</p>
                 </div>
             </div>
