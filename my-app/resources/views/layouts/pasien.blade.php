@@ -22,23 +22,24 @@
         <a href="{{ route('pasien.dashboard') }}" class="nav-link {{ request()->routeIs('pasien.dashboard') ? 'active' : '' }}" style="{{ request()->routeIs('pasien.dashboard') ? 'background:linear-gradient(135deg,#06b6d4,#0ea5e9);box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);' : '' }}">
             <i class="bi bi-grid-1x2-fill"></i> Dashboard
         </a>
-        <a href="{{ route('pasien.screening') }}" class="nav-link {{ request()->routeIs('pasien.screening*') ? 'active' : '' }}" style="{{ request()->routeIs('pasien.screening*') ? 'background:linear-gradient(135deg,#06b6d4,#0ea5e9);box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);' : '' }}">
-            <i class="bi bi-droplet-fill"></i> Screening Anemia
+        <a href="{{ route('pasien.buku-kia') }}" class="nav-link {{ request()->routeIs('pasien.buku-kia') ? 'active' : '' }}" style="{{ request()->routeIs('pasien.buku-kia') ? 'background:linear-gradient(135deg,#06b6d4,#0ea5e9);box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);' : '' }}">
+            <i class="bi bi-journal-medical"></i> Buku KIA Interaktif
         </a>
         <a href="{{ route('pasien.health-updates.index') }}" class="nav-link {{ request()->routeIs('pasien.health-updates.*') ? 'active' : '' }}" style="{{ request()->routeIs('pasien.health-updates.*') ? 'background:linear-gradient(135deg,#06b6d4,#0ea5e9);box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);' : '' }}">
             <i class="bi bi-heart-pulse-fill"></i> Update Kesehatan
         </a>
-        <a href="{{ route('pasien.buku-kia') }}" class="nav-link {{ request()->routeIs('pasien.buku-kia') ? 'active' : '' }}" style="{{ request()->routeIs('pasien.buku-kia') ? 'background:linear-gradient(135deg,#06b6d4,#0ea5e9);box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);' : '' }}">
-            <i class="bi bi-journal-medical"></i> Buku KIA Interaktif
+        <a href="{{ route('pasien.screening') }}" class="nav-link {{ request()->routeIs('pasien.screening*') ? 'active' : '' }}" style="{{ request()->routeIs('pasien.screening*') ? 'background:linear-gradient(135deg,#06b6d4,#0ea5e9);box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);' : '' }}">
+            <i class="bi bi-droplet-fill"></i> Screening Anemia
         </a>
         <a href="{{ route('pasien.riwayat') }}" class="nav-link {{ request()->routeIs('pasien.riwayat*') ? 'active' : '' }}" style="{{ request()->routeIs('pasien.riwayat*') ? 'background:linear-gradient(135deg,#06b6d4,#0ea5e9);box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);' : '' }}">
             <i class="bi bi-clipboard2-pulse-fill"></i> Riwayat Periksa
         </a>
+
+        <hr style="border-color: rgba(255,255,255,0.12); margin: 12px 4px;">
+
         <a href="{{ route('pasien.profil.edit') }}" class="nav-link {{ request()->routeIs('pasien.profil.*') ? 'active' : '' }}" style="{{ request()->routeIs('pasien.profil.*') ? 'background:linear-gradient(135deg,#06b6d4,#0ea5e9);box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);' : '' }}">
             <i class="bi bi-person-fill"></i> Profil Saya
         </a>
-
-        <div class="nav-label mt-3">Akun</div>
         <form action="{{ route('logout') }}" method="POST" class="d-inline">
             @csrf
             <button type="submit" class="nav-link border-0 bg-transparent w-100 text-start" style="cursor:pointer;">
