@@ -155,7 +155,7 @@
                             <div class="col-6 col-md-3">
                                 <div class="card border-0 shadow-sm rounded-3 text-center bg-white p-3 h-100">
                                     <div class="porsi-icon" style="background:#FFF8E1;">
-                                        <img src="{{ asset('images/icons/rice-icon.png') }}" alt="Nasi/Karbohidrat">
+                                        <span style="font-size:2.5rem;line-height:1;">🍚</span>
                                     </div>
                                     <h6 class="fw-bold" style="font-size:0.85rem;">Nasi / Karbohidrat</h6>
                                     <span class="badge rounded-pill" style="background:#F0B429;color:#fff;">6 porsi</span>
@@ -164,7 +164,7 @@
                             <div class="col-6 col-md-3">
                                 <div class="card border-0 shadow-sm rounded-3 text-center bg-white p-3 h-100">
                                     <div class="porsi-icon" style="background:#FFF8E1;">
-                                        <img src="{{ asset('images/icons/protein-icon.png') }}" alt="Protein Hewani & Nabati">
+                                        <span style="font-size:2.5rem;line-height:1;">🥚🍗</span>
                                     </div>
                                     <h6 class="fw-bold" style="font-size:0.85rem;">Protein Hewani &amp; Nabati</h6>
                                     <span class="badge rounded-pill" style="background:#0375C4;">4 porsi Hewani + 4 porsi Nabati</span>
@@ -173,7 +173,7 @@
                             <div class="col-6 col-md-3">
                                 <div class="card border-0 shadow-sm rounded-3 text-center bg-white p-3 h-100">
                                     <div class="porsi-icon" style="background:#FFF8E1;">
-                                        <img src="{{ asset('images/icons/vegetables-icon.png') }}" alt="Sayuran">
+                                        <span style="font-size:2.5rem;line-height:1;">🥦</span>
                                     </div>
                                     <h6 class="fw-bold" style="font-size:0.85rem;">Sayuran</h6>
                                     <span class="badge rounded-pill" style="background:#28A745;">4 porsi</span>
@@ -182,7 +182,7 @@
                             <div class="col-6 col-md-3">
                                 <div class="card border-0 shadow-sm rounded-3 text-center bg-white p-3 h-100">
                                     <div class="porsi-icon" style="background:#FFF8E1;">
-                                        <img src="{{ asset('images/icons/fruits-icon.png') }}" alt="Buah-buahan">
+                                        <span style="font-size:2.5rem;line-height:1;">🍎</span>
                                     </div>
                                     <h6 class="fw-bold" style="font-size:0.85rem;">Buah-buahan</h6>
                                     <span class="badge rounded-pill" style="background:#DC3545;">4 porsi</span>
