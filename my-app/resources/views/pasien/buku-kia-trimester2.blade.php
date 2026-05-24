@@ -25,6 +25,9 @@
             <span class="btn btn-sm rounded-pill px-3 text-white fw-semibold" style="background:#00A9BB; cursor:default;">
                 Trimester 2 (Bulan 4–6)
             </span>
+            <a href="{{ route('pasien.buku-kia.trimester3') }}" class="btn btn-sm btn-outline-secondary rounded-pill px-3">
+                Trimester 3 <i class="bi bi-arrow-right ms-1"></i>
+            </a>
         </div>
 
         <!-- Main Card Container -->
