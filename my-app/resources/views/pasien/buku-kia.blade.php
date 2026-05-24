@@ -64,6 +64,30 @@
                     <!-- TAB 1: Perkembangan Janin -->
                     <div class="tab-pane fade show active" id="janin" role="tabpanel" aria-labelledby="janin-tab">
 
+                        <!-- Banner Ringkasan Fase Trimester 1 -->
+                        <div class="card border-0 shadow-sm rounded-4 mb-4" style="background: linear-gradient(135deg, #e0f2fe, #f0fdff);">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center gap-3 mb-3">
+                                    <div class="text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:50px;height:50px;background:#0375C4;">
+                                        <span style="font-size:1.5rem;line-height:1;">🧬</span>
+                                    </div>
+                                    <h5 class="fw-bold mb-0" style="color:#0375C4;">Masa Penting Pembentukan Bagian Tubuh Janin</h5>
+                                </div>
+                                <p class="text-muted mb-3">Trimester 1 (Bulan 1–3) adalah masa krusial di mana organ penting bayi, termasuk otak, mulai terbentuk. Ibu mungkin mengalami mual, muntah, dan mudah lelah, yang merupakan adaptasi normal tubuh.</p>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <span class="badge rounded-pill px-3 py-2 fw-semibold" style="background:#dbeafe;color:#1d4ed8;font-size:0.78rem;">
+                                        <i class="bi bi-arrow-up-circle me-1"></i>Target Kenaikan BB Ibu: 1–3 kg
+                                    </span>
+                                    <span class="badge rounded-pill px-3 py-2 fw-semibold" style="background:#dcfce7;color:#15803d;font-size:0.78rem;">
+                                        <i class="bi bi-rulers me-1"></i>Panjang Janin: ~10 cm
+                                    </span>
+                                    <span class="badge rounded-pill px-3 py-2 fw-semibold" style="background:#fef9c3;color:#854d0e;font-size:0.78rem;">
+                                        <i class="bi bi-speedometer2 me-1"></i>Berat Janin: ~28 gram
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
                         <h5 class="fw-bold text-dark mb-4">Ukuran Janin Anda (Bulan 1–3)</h5>
                         <!-- Grid Ukuran Janin -->
                         <div class="row g-3 g-md-4 mb-5">
@@ -90,7 +114,35 @@
                             </div>
                         </div>
 
-                        <!-- Perkembangan Otak dipindahkan ke Beranda KIA -->
+                        <!-- Perkembangan Otak Anak -->
+                        <div class="col-12">
+                            <div class="card border-0 shadow-sm rounded-4 bg-white">
+                                <div class="card-body p-4 text-center">
+                                    <h5 class="fw-bold text-dark mb-4">Perkembangan Otak Anak</h5>
+                                    <div class="row align-items-center justify-content-center g-4">
+                                        <div class="col-sm-4">
+                                            <div class="circular-progress" data-percentage="25">
+                                                <span class="progress-value">25%</span>
+                                            </div>
+                                            <div class="mt-3 fw-semibold">Saat Lahir</div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="circular-progress" data-percentage="70">
+                                                <span class="progress-value">70%</span>
+                                            </div>
+                                            <div class="mt-3 fw-semibold">Usia 1 Tahun</div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="circular-progress" data-percentage="85">
+                                                <span class="progress-value">85%</span>
+                                            </div>
+                                            <div class="mt-3 fw-semibold">Usia 3 Tahun</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
                     <!-- TAB 2: Nutrisi & Perawatan -->
@@ -444,4 +496,16 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Circular Progress Animation
+        document.querySelectorAll('.circular-progress').forEach(function (circle) {
+            const percentage = circle.getAttribute('data-percentage');
+            circle.style.background = `conic-gradient(#0ea5e9 ${percentage * 3.6}deg, #e2e8f0 0deg)`;
+        });
+    });
+</script>
+@endpush
 
