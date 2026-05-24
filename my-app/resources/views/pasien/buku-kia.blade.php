@@ -7,10 +7,10 @@
 <div class="row justify-content-center">
     <div class="col-lg-10">
         <!-- Header Buku KIA -->
-        <div class="d-flex justify-content-between align-items-center mb-4">
+        <div class="d-flex justify-content-between align-items-center mb-4 kia-header">
             <div>
                 <h4 class="fw-bold mb-1" style="color: #0b4d75;">Buku KIA Interaktif</h4>
-                <span class="badge rounded-pill bg-info text-white px-3 py-2">Trimester 1</span>
+                <span class="badge rounded-pill text-white px-3 py-2" style="background:#0375C4;">Trimester 1</span>
             </div>
             <div class="user-info text-end">
                 <div class="fw-semibold text-dark">{{ auth()->user()->name }} - Pasien</div>
@@ -19,28 +19,28 @@
 
         <!-- Main Card Container -->
         <div class="card custom-card bg-off-white shadow-soft rounded-2xl border-0 mb-4">
-            <div class="card-body p-4 p-md-5">
+            <div class="card-body p-3 p-md-4 p-lg-5">
                 
-                <!-- Horizontal Tabs Navigation -->
-                <ul class="nav nav-pills kia-tabs mb-4 pb-2" id="kia-tabs" role="tablist">
+                <!-- Horizontal Scrollable Tabs Navigation -->
+                <ul class="nav nav-pills kia-tabs mb-4" id="kia-tabs" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active rounded-pill px-4 fw-semibold shadow-sm" id="janin-tab" data-bs-toggle="pill" data-bs-target="#janin" type="button" role="tab" aria-controls="janin" aria-selected="true">
-                            <i class="bi bi-heart-pulse me-2"></i>Perkembangan Janin
+                        <button class="nav-link active rounded-pill px-3 px-md-4 fw-semibold shadow-sm" id="janin-tab" data-bs-toggle="pill" data-bs-target="#janin" type="button" role="tab" aria-controls="janin" aria-selected="true">
+                            <i class="bi bi-heart-pulse me-1 me-md-2"></i>Perkembangan Janin
                         </button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link rounded-pill px-4 fw-semibold shadow-sm mx-2" id="nutrisi-tab" data-bs-toggle="pill" data-bs-target="#nutrisi" type="button" role="tab" aria-controls="nutrisi" aria-selected="false">
-                            <i class="bi bi-egg-fried me-2"></i>Nutrisi & Perawatan
+                        <button class="nav-link rounded-pill px-3 px-md-4 fw-semibold shadow-sm" id="nutrisi-tab" data-bs-toggle="pill" data-bs-target="#nutrisi" type="button" role="tab" aria-controls="nutrisi" aria-selected="false">
+                            <i class="bi bi-egg-fried me-1 me-md-2"></i>Nutrisi & Perawatan
                         </button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link rounded-pill px-4 fw-semibold shadow-sm mx-2" id="bahaya-tab" data-bs-toggle="pill" data-bs-target="#bahaya" type="button" role="tab" aria-controls="bahaya" aria-selected="false">
-                            <i class="bi bi-exclamation-triangle me-2"></i>Tanda Bahaya & Jurnal
+                        <button class="nav-link rounded-pill px-3 px-md-4 fw-semibold shadow-sm" id="bahaya-tab" data-bs-toggle="pill" data-bs-target="#bahaya" type="button" role="tab" aria-controls="bahaya" aria-selected="false">
+                            <i class="bi bi-exclamation-triangle me-1 me-md-2"></i>Tanda Bahaya & Jurnal
                         </button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link rounded-pill px-4 fw-semibold shadow-sm" id="mental-tab" data-bs-toggle="pill" data-bs-target="#mental" type="button" role="tab" aria-controls="mental" aria-selected="false">
-                            <i class="bi bi-flower1 me-2"></i>Mental & Kelas KIA
+                        <button class="nav-link rounded-pill px-3 px-md-4 fw-semibold shadow-sm" id="mental-tab" data-bs-toggle="pill" data-bs-target="#mental" type="button" role="tab" aria-controls="mental" aria-selected="false">
+                            <i class="bi bi-flower1 me-1 me-md-2"></i>Mental & Kelas KIA
                         </button>
                     </li>
                 </ul>
@@ -54,7 +54,7 @@
                         <div class="card border-0 shadow-sm rounded-4 mb-4" style="background: linear-gradient(135deg, #ffffff, #f8f9fa);">
                             <div class="card-body p-4">
                                 <div class="d-flex align-items-center gap-3 mb-3">
-                                    <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                    <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width: 50px; height: 50px;">
                                         <i class="bi bi-star-fill fs-4"></i>
                                     </div>
                                     <h5 class="fw-bold mb-0 text-primary">Pentingnya 1000 Hari Pertama Kehidupan (HPK)</h5>
@@ -65,24 +65,24 @@
 
                         <h5 class="fw-bold text-dark mb-4">Ukuran Janin Anda (Bulan 1-3)</h5>
                         <!-- Grid Ukuran Janin -->
-                        <div class="row g-4 mb-5">
-                            <div class="col-md-4">
+                        <div class="row g-3 g-md-4 mb-5">
+                            <div class="col-12 col-md-6 col-lg-4">
                                 <div class="card border-0 shadow-sm rounded-4 h-100 text-center p-4 hover-lift transition-all">
-                                    <div class="display-1 mb-3">🍚</div>
+                                    <div class="bulan-emoji mb-3">🍚</div>
                                     <h6 class="fw-bold text-dark">Bulan 1</h6>
                                     <p class="text-muted small mb-0">Sebesar biji beras. Sistem saraf dan jantung mulai terbentuk.</p>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-12 col-md-6 col-lg-4">
                                 <div class="card border-0 shadow-sm rounded-4 h-100 text-center p-4 hover-lift transition-all">
-                                    <div class="display-1 mb-3">🫐</div>
+                                    <div class="bulan-emoji mb-3">🫐</div>
                                     <h6 class="fw-bold text-dark">Bulan 2</h6>
                                     <p class="text-muted small mb-0">Sebesar buah blueberry. Detak jantung janin sudah bisa terdengar lewat USG.</p>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-12 col-md-6 col-lg-4">
                                 <div class="card border-0 shadow-sm rounded-4 h-100 text-center p-4 hover-lift transition-all">
-                                    <div class="display-1 mb-3">🍋</div>
+                                    <div class="bulan-emoji mb-3">🍋</div>
                                     <h6 class="fw-bold text-dark">Bulan 3</h6>
                                     <p class="text-muted small mb-0">Sebesar jeruk nipis. Organ utama sudah terbentuk lengkap.</p>
                                 </div>
@@ -120,8 +120,8 @@
                     <!-- TAB 2: Nutrisi & Perawatan -->
                     <div class="tab-pane fade" id="nutrisi" role="tabpanel" aria-labelledby="nutrisi-tab">
                         <!-- Alert Garam -->
-                        <div class="alert alert-warning border-warning border-start border-4 rounded-3 d-flex align-items-center mb-4">
-                            <i class="bi bi-exclamation-circle-fill fs-3 text-warning me-3"></i>
+                        <div class="alert alert-warning alert-nutrisi border-warning border-start border-4 rounded-3 d-flex align-items-center mb-4 px-2 px-md-3 py-2 py-md-3">
+                            <i class="bi bi-exclamation-circle-fill fs-3 text-warning me-3" style="color:#FFC107 !important;"></i>
                             <div>
                                 <h6 class="fw-bold mb-1">Peringatan Nutrisi!</h6>
                                 <p class="mb-0">Batasi konsumsi garam paling banyak <strong>1 sendok teh/hari</strong> untuk mencegah tekanan darah tinggi selama kehamilan.</p>
@@ -133,30 +133,38 @@
                         <div class="row g-3 mb-4">
                             <div class="col-6 col-md-3">
                                 <div class="card border-0 shadow-sm rounded-3 text-center bg-white p-3 h-100">
-                                    <i class="bi bi-bowl-fill fs-2 text-primary mb-2"></i>
-                                    <h6 class="fw-bold">Nasi / Karbohidrat</h6>
-                                    <span class="badge bg-primary rounded-pill">5 porsi</span>
+                                    <div class="porsi-icon" style="background:#FFF8E1;">
+                                        <img src="{{ asset('images/icons/rice-icon.png') }}" alt="Nasi/Karbohidrat">
+                                    </div>
+                                    <h6 class="fw-bold" style="font-size:0.85rem;">Nasi / Karbohidrat</h6>
+                                    <span class="badge rounded-pill" style="background:#F0B429;color:#fff;">5 porsi</span>
                                 </div>
                             </div>
                             <div class="col-6 col-md-3">
                                 <div class="card border-0 shadow-sm rounded-3 text-center bg-white p-3 h-100">
-                                    <i class="bi bi-egg-fill fs-2 text-info mb-2"></i>
-                                    <h6 class="fw-bold">Protein Hewani & Nabati</h6>
-                                    <span class="badge bg-info rounded-pill">4 porsi</span>
+                                    <div class="porsi-icon" style="background:#FFF8E1;">
+                                        <img src="{{ asset('images/icons/protein-icon.png') }}" alt="Protein Hewani & Nabati">
+                                    </div>
+                                    <h6 class="fw-bold" style="font-size:0.85rem;">Protein Hewani & Nabati</h6>
+                                    <span class="badge rounded-pill" style="background:#0375C4;">4 porsi</span>
                                 </div>
                             </div>
                             <div class="col-6 col-md-3">
                                 <div class="card border-0 shadow-sm rounded-3 text-center bg-white p-3 h-100">
-                                    <i class="bi bi-brightness-alt-low-fill fs-2 text-success mb-2"></i>
-                                    <h6 class="fw-bold">Sayuran</h6>
-                                    <span class="badge bg-success rounded-pill">4 porsi</span>
+                                    <div class="porsi-icon" style="background:#FFF8E1;">
+                                        <img src="{{ asset('images/icons/vegetables-icon.png') }}" alt="Sayuran">
+                                    </div>
+                                    <h6 class="fw-bold" style="font-size:0.85rem;">Sayuran</h6>
+                                    <span class="badge rounded-pill" style="background:#28A745;">4 porsi</span>
                                 </div>
                             </div>
                             <div class="col-6 col-md-3">
                                 <div class="card border-0 shadow-sm rounded-3 text-center bg-white p-3 h-100">
-                                    <i class="bi bi-apple fs-2 text-danger mb-2"></i>
-                                    <h6 class="fw-bold">Buah-buahan</h6>
-                                    <span class="badge bg-danger rounded-pill">4 porsi</span>
+                                    <div class="porsi-icon" style="background:#FFF8E1;">
+                                        <img src="{{ asset('images/icons/fruits-icon.png') }}" alt="Buah-buahan">
+                                    </div>
+                                    <h6 class="fw-bold" style="font-size:0.85rem;">Buah-buahan</h6>
+                                    <span class="badge rounded-pill" style="background:#DC3545;">4 porsi</span>
                                 </div>
                             </div>
                         </div>
@@ -262,7 +270,7 @@
                         </div>
 
                         <div class="card border-0 shadow-sm rounded-4 bg-white">
-                            <div class="card-body p-4 p-md-5">
+                            <div class="card-body p-3 p-md-4 p-lg-5">
                                 <h5 class="fw-bold text-dark border-bottom pb-3 mb-4"><i class="bi bi-journal-medical text-primary me-2"></i>Formulir Jurnal Kesehatan Harian</h5>
                                 
                                 <form action="{{ route('pasien.buku-kia.store') }}" method="POST">
@@ -272,43 +280,43 @@
                                     
                                     <div class="mb-4">
                                         <!-- Tanda Bahaya Switches -->
-                                        <div class="d-flex justify-content-between align-items-center p-3 mb-3 bg-light rounded-3">
+                                        <div class="d-flex justify-content-between align-items-center p-3 mb-3 bg-light rounded-3 kia-switch-row">
                                             <label class="fw-semibold mb-0" for="flag_0">Apakah ibu mengalami pandangan kabur?</label>
                                             <div class="form-check form-switch m-0">
                                                 <input class="form-check-input toggle-switch" type="checkbox" name="flag_0" id="flag_0" value="1">
                                             </div>
                                         </div>
-                                        <div class="d-flex justify-content-between align-items-center p-3 mb-3 bg-light rounded-3">
+                                        <div class="d-flex justify-content-between align-items-center p-3 mb-3 bg-light rounded-3 kia-switch-row">
                                             <label class="fw-semibold mb-0" for="flag_1">Keluar cairan berbau dari jalan lahir?</label>
                                             <div class="form-check form-switch m-0">
                                                 <input class="form-check-input toggle-switch" type="checkbox" name="flag_1" id="flag_1" value="1">
                                             </div>
                                         </div>
-                                        <div class="d-flex justify-content-between align-items-center p-3 mb-3 bg-light rounded-3">
+                                        <div class="d-flex justify-content-between align-items-center p-3 mb-3 bg-light rounded-3 kia-switch-row">
                                             <label class="fw-semibold mb-0" for="flag_2">Pusing/sakit kepala berat?</label>
                                             <div class="form-check form-switch m-0">
                                                 <input class="form-check-input toggle-switch" type="checkbox" name="flag_2" id="flag_2" value="1">
                                             </div>
                                         </div>
-                                        <div class="d-flex justify-content-between align-items-center p-3 mb-3 bg-light rounded-3">
+                                        <div class="d-flex justify-content-between align-items-center p-3 mb-3 bg-light rounded-3 kia-switch-row">
                                             <label class="fw-semibold mb-0" for="flag_3">Mual dan muntah hebat?</label>
                                             <div class="form-check form-switch m-0">
                                                 <input class="form-check-input toggle-switch" type="checkbox" name="flag_3" id="flag_3" value="1">
                                             </div>
                                         </div>
-                                        <div class="d-flex justify-content-between align-items-center p-3 mb-3 bg-light rounded-3">
+                                        <div class="d-flex justify-content-between align-items-center p-3 mb-3 bg-light rounded-3 kia-switch-row">
                                             <label class="fw-semibold mb-0" for="flag_4">Perdarahan?</label>
                                             <div class="form-check form-switch m-0">
                                                 <input class="form-check-input toggle-switch" type="checkbox" name="flag_4" id="flag_4" value="1">
                                             </div>
                                         </div>
-                                        <div class="d-flex justify-content-between align-items-center p-3 mb-3 bg-light rounded-3">
+                                        <div class="d-flex justify-content-between align-items-center p-3 mb-3 bg-light rounded-3 kia-switch-row">
                                             <label class="fw-semibold mb-0" for="flag_5">Demam Tinggi?</label>
                                             <div class="form-check form-switch m-0">
                                                 <input class="form-check-input toggle-switch" type="checkbox" name="flag_5" id="flag_5" value="1">
                                             </div>
                                         </div>
-                                        <div class="d-flex justify-content-between align-items-center p-3 mb-3 bg-light rounded-3">
+                                        <div class="d-flex justify-content-between align-items-center p-3 mb-3 bg-light rounded-3 kia-switch-row">
                                             <label class="fw-semibold mb-0" for="flag_6">Nyeri perut hebat?</label>
                                             <div class="form-check form-switch m-0">
                                                 <input class="form-check-input toggle-switch" type="checkbox" name="flag_6" id="flag_6" value="1">
@@ -317,7 +325,7 @@
                                     </div>
                                     
                                     <div class="d-grid mt-4">
-                                        <button type="submit" class="btn btn-lg fw-bold text-white shadow-sm" style="background: linear-gradient(135deg, #06b6d4, #0ea5e9); border-radius: 12px;">
+                                        <button type="submit" class="btn btn-lg fw-bold text-white shadow-sm" style="background: linear-gradient(135deg, #0375C4, #0ea5e9); border-radius: 12px;">
                                             <i class="bi bi-save me-2"></i> Simpan Catatan Hari Ini
                                         </button>
                                     </div>
@@ -329,24 +337,24 @@
                     <!-- TAB 4: Mental & Kelas KIA -->
                     <div class="tab-pane fade" id="mental" role="tabpanel" aria-labelledby="mental-tab">
                         <h5 class="fw-bold text-dark mb-4">Tips Menjaga Kesehatan Jiwa</h5>
-                        <div class="row g-4 mb-5">
-                            <div class="col-md-4">
+                        <div class="row g-3 g-md-4 mb-5">
+                            <div class="col-12 col-md-6 col-lg-4">
                                 <div class="pastel-card" style="background-color: #f3e8ff;">
-                                    <i class="bi bi-moon-stars-fill text-purple mb-3 fs-2 d-block" style="color: #9333ea;"></i>
+                                    <i class="bi bi-moon-stars-fill mb-3 fs-2 d-block" style="color: #9333ea;"></i>
                                     <h6 class="fw-bold text-dark">Tidur Cukup</h6>
                                     <p class="small text-muted mb-0">Pastikan kualitas tidur Anda terjaga. Istirahat 7-8 jam sangat dianjurkan.</p>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-12 col-md-6 col-lg-4">
                                 <div class="pastel-card" style="background-color: #fce7f3;">
-                                    <i class="bi bi-cup-hot-fill text-pink mb-3 fs-2 d-block" style="color: #db2777;"></i>
+                                    <i class="bi bi-cup-hot-fill mb-3 fs-2 d-block" style="color: #db2777;"></i>
                                     <h6 class="fw-bold text-dark">Makan Bergizi</h6>
                                     <p class="small text-muted mb-0">Bukan tentang seberapa banyak porsi, tetapi keseimbangan gizinya.</p>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-12 col-md-6 col-lg-4">
                                 <div class="pastel-card" style="background-color: #fee2e2;">
-                                    <i class="bi bi-people-fill text-rose mb-3 fs-2 d-block" style="color: #e11d48;"></i>
+                                    <i class="bi bi-people-fill mb-3 fs-2 d-block" style="color: #e11d48;"></i>
                                     <h6 class="fw-bold text-dark">Dukungan Suami & Keluarga</h6>
                                     <p class="small text-muted mb-0">Komunikasikan perasaan Anda, dukungan keluarga sangat penting di masa ini.</p>
                                 </div>
