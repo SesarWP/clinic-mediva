@@ -445,16 +445,3 @@
 </div>
 @endsection
 
-@push('scripts')
-<script>
-    // Circular Progress Animation
-    document.addEventListener("DOMContentLoaded", function() {
-        const circles = document.querySelectorAll('.circular-progress');
-        circles.forEach(circle => {
-            let percentage = circle.getAttribute('data-percentage');
-            // Animate using conic-gradient dynamically
-            circle.style.background = `conic-gradient(#0ea5e9 ${percentage * 3.6}deg, #e2e8f0 0deg)`;
-        });
-    });
-</script>
-@endpush
