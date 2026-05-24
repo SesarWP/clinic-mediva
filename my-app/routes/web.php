@@ -14,7 +14,7 @@ use App\Http\Controllers\Pasien\HealthUpdateController as PasienHealthUpdateCont
 // ============================================
 // HALAMAN UTAMA - Pilih Login
 // ============================================
-Route::get('/', [AuthController::class, 'showLoginChoice'])->name('home');
+Route::get('/', [AuthController::class, 'showLoginChoice'])->name('login');
 
 // ============================================
 // AUTHENTICATION ROUTES

@@ -200,6 +200,13 @@
         <h1>Klinik Mediva Ngawi</h1>
         <p class="subtitle">Sistem Monitoring ANC & Screening Anemia Ibu Hamil</p>
 
+        @if (session('warning'))
+            <div class="alert alert-warning alert-dismissible fade show text-start mb-4" role="alert" style="border-radius: 12px; font-weight: 500;">
+                <i class="bi bi-exclamation-triangle-fill me-2"></i> {{ session('warning') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+
         <div class="login-cards">
             <a href="{{ route('login.bidan') }}" class="login-card bidan">
                 <div class="card-icon">

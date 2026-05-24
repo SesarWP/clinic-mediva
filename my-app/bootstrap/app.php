@@ -14,6 +14,11 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'role' => \App\Http\Middleware\CheckRole::class,
         ]);
+
+        $middleware->redirectGuestsTo(function (\Illuminate\Http\Request $request) {
+            session()->flash('warning', 'Sesi Anda telah berakhir atau Anda belum login. Silakan login kembali untuk melanjutkan keamanan data Anda.');
+            return route('login');
+        });
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
