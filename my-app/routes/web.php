@@ -94,6 +94,7 @@ Route::prefix('pasien')->middleware(['auth', 'role:pasien'])->name('pasien.')->g
 
     // Buku KIA Interaktif
     Route::get('/buku-kia', [PasienDashboardController::class, 'bukuKia'])->name('buku-kia');
+    Route::get('/buku-kia/trimester2', [PasienDashboardController::class, 'bukuKiaTrimester2'])->name('buku-kia.trimester2');
     Route::post('/buku-kia/store', [\App\Http\Controllers\Pasien\KiaCheckinController::class, 'store'])->name('buku-kia.store');
 
     // Update Kesehatan (Menggunakan HealthUpdateController)

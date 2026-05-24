@@ -1,6 +1,6 @@
 @extends('layouts.pasien')
 
-@section('title', 'Buku KIA Interaktif - Trimester 1')
+@section('title', 'Buku KIA Interaktif - Trimester 2')
 @section('page-title', 'Buku KIA Interaktif')
 
 @section('content')
@@ -10,7 +10,7 @@
         <div class="d-flex justify-content-between align-items-center mb-4 kia-header">
             <div>
                 <h4 class="fw-bold mb-1" style="color: #0b4d75;">Buku KIA Interaktif</h4>
-                <span class="badge rounded-pill text-white px-3 py-2" style="background:#0375C4;">Trimester 1</span>
+                <span class="badge rounded-pill text-white px-3 py-2" style="background:#00A9BB;">Trimester 2</span>
             </div>
             <div class="user-info text-end">
                 <div class="fw-semibold text-dark">{{ auth()->user()->name }} - Pasien</div>
@@ -19,18 +19,18 @@
 
         <!-- Navigasi Antar Trimester -->
         <div class="d-flex gap-2 mb-4 flex-wrap">
-            <span class="btn btn-sm rounded-pill px-3 text-white fw-semibold" style="background:#0375C4; cursor:default;">
-                Trimester 1 (Bulan 1–3)
-            </span>
-            <a href="{{ route('pasien.buku-kia.trimester2') }}" class="btn btn-sm btn-outline-secondary rounded-pill px-3">
-                Trimester 2 <i class="bi bi-arrow-right ms-1"></i>
+            <a href="{{ route('pasien.buku-kia') }}" class="btn btn-sm btn-outline-secondary rounded-pill px-3">
+                <i class="bi bi-arrow-left me-1"></i> Trimester 1
             </a>
+            <span class="btn btn-sm rounded-pill px-3 text-white fw-semibold" style="background:#00A9BB; cursor:default;">
+                Trimester 2 (Bulan 4–6)
+            </span>
         </div>
 
         <!-- Main Card Container -->
         <div class="card custom-card bg-off-white shadow-soft rounded-2xl border-0 mb-4">
             <div class="card-body p-3 p-md-4 p-lg-5">
-                
+
                 <!-- Horizontal Scrollable Tabs Navigation -->
                 <ul class="nav nav-pills kia-tabs mb-4" id="kia-tabs" role="tablist">
                     <li class="nav-item" role="presentation">
@@ -57,44 +57,48 @@
 
                 <!-- Tabs Content -->
                 <div class="tab-content kia-tab-content mt-3" id="kia-tabs-content">
-                    
-                    <!-- TAB 1: Perkembangan Janin -->
+
+                    <!-- ================================================ -->
+                    <!-- TAB 1: Perkembangan Janin                        -->
+                    <!-- ================================================ -->
                     <div class="tab-pane fade show active" id="janin" role="tabpanel" aria-labelledby="janin-tab">
-                        <!-- 1000 HPK Card -->
-                        <div class="card border-0 shadow-sm rounded-4 mb-4" style="background: linear-gradient(135deg, #ffffff, #f8f9fa);">
+
+                        <!-- Banner Info Trimester 2 -->
+                        <div class="card border-0 shadow-sm rounded-4 mb-4" style="background: linear-gradient(135deg, #e0f7fa, #f0fdff);">
                             <div class="card-body p-4">
                                 <div class="d-flex align-items-center gap-3 mb-3">
-                                    <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width: 50px; height: 50px;">
-                                        <i class="bi bi-star-fill fs-4"></i>
+                                    <div class="text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:50px;height:50px;background:#00A9BB;">
+                                        <i class="bi bi-calendar2-heart-fill fs-4"></i>
                                     </div>
-                                    <h5 class="fw-bold mb-0 text-primary">Pentingnya 1000 Hari Pertama Kehidupan (HPK)</h5>
+                                    <h5 class="fw-bold mb-0" style="color:#00A9BB;">Saatnya Mulai Merencanakan Kelahiran</h5>
                                 </div>
-                                <p class="text-muted mb-0">Masa 1000 HPK dimulai sejak janin di dalam kandungan (270 hari) hingga anak berusia 2 tahun (730 hari). Ini adalah masa emas (golden period) di mana otak dan fisik anak berkembang paling pesat. Nutrisi dan perawatan yang baik sangat penting untuk mencegah stunting dan memastikan masa depan cerah bagi si kecil.</p>
+                                <p class="text-muted mb-0">Trimester 2 (Bulan 4–6) adalah periode paling nyaman dalam kehamilan. Mual biasanya mereda, energi meningkat, dan Anda mulai merasakan gerakan si kecil. Gunakan waktu ini untuk mempersiapkan rencana persalinan, melengkapi nutrisi, dan rutin memeriksakan kandungan.</p>
                             </div>
                         </div>
 
-                        <h5 class="fw-bold text-dark mb-4">Ukuran Janin Anda (Bulan 1-3)</h5>
+                        <h5 class="fw-bold text-dark mb-4">Ukuran Janin Anda (Bulan 4–6)</h5>
+
                         <!-- Grid Ukuran Janin -->
                         <div class="row g-3 g-md-4 mb-5">
                             <div class="col-12 col-md-6 col-lg-4">
                                 <div class="card border-0 shadow-sm rounded-4 h-100 text-center p-4 hover-lift transition-all">
-                                    <div class="bulan-emoji mb-3">🍚</div>
-                                    <h6 class="fw-bold text-dark">Bulan 1</h6>
-                                    <p class="text-muted small mb-0">Sebesar biji beras. Sistem saraf dan jantung mulai terbentuk.</p>
+                                    <div class="bulan-emoji mb-3">🍎</div>
+                                    <h6 class="fw-bold text-dark">Bulan 4</h6>
+                                    <p class="text-muted small mb-0">Sebesar buah apel. Panjang sekitar 12,5 cm. Gejala mual pada ibu mulai berkurang.</p>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-lg-4">
                                 <div class="card border-0 shadow-sm rounded-4 h-100 text-center p-4 hover-lift transition-all">
-                                    <div class="bulan-emoji mb-3">🫐</div>
-                                    <h6 class="fw-bold text-dark">Bulan 2</h6>
-                                    <p class="text-muted small mb-0">Sebesar buah blueberry. Detak jantung janin sudah bisa terdengar lewat USG.</p>
+                                    <div class="bulan-emoji mb-3">🦶</div>
+                                    <h6 class="fw-bold text-dark">Bulan 5</h6>
+                                    <p class="text-muted small mb-0">Ibu mulai merasakan gerak bayi seperti menendang. Kenaikan berat badan ibu sekitar 4–8 kg.</p>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-lg-4">
                                 <div class="card border-0 shadow-sm rounded-4 h-100 text-center p-4 hover-lift transition-all">
-                                    <div class="bulan-emoji mb-3">🍋</div>
-                                    <h6 class="fw-bold text-dark">Bulan 3</h6>
-                                    <p class="text-muted small mb-0">Sebesar jeruk nipis. Organ utama sudah terbentuk lengkap.</p>
+                                    <div class="bulan-emoji mb-3">🌽</div>
+                                    <h6 class="fw-bold text-dark">Bulan 6</h6>
+                                    <p class="text-muted small mb-0">Sebesar jagung. Panjang bisa mencapai 34 cm dan berat sekitar 1.000 gram. Organ fungsi tubuh berkembang.</p>
                                 </div>
                             </div>
                         </div>
@@ -126,19 +130,23 @@
                             </div>
                         </div>
                     </div>
+                    <!-- END TAB 1 -->
 
-                    <!-- TAB 2: Nutrisi & Perawatan -->
+                    <!-- ================================================ -->
+                    <!-- TAB 2: Nutrisi & Perawatan                       -->
+                    <!-- ================================================ -->
                     <div class="tab-pane fade" id="nutrisi" role="tabpanel" aria-labelledby="nutrisi-tab">
-                        <!-- Alert Garam -->
+
+                        <!-- Alert Nutrisi Trimester 2 -->
                         <div class="alert alert-warning alert-nutrisi border-warning border-start border-4 rounded-3 d-flex align-items-center mb-4 px-2 px-md-3 py-2 py-md-3">
                             <i class="bi bi-exclamation-circle-fill fs-3 text-warning me-3" style="color:#FFC107 !important;"></i>
                             <div>
-                                <h6 class="fw-bold mb-1">Peringatan Nutrisi!</h6>
-                                <p class="mb-0">Batasi konsumsi garam paling banyak <strong>1 sendok teh/hari</strong> untuk mencegah tekanan darah tinggi selama kehamilan.</p>
+                                <h6 class="fw-bold mb-1">Peringatan Nutrisi Trimester 2!</h6>
+                                <p class="mb-0">Makan dengan porsi lebih kecil tapi sering <strong>(3x makan utama + 1–2x kudapan)</strong>. Batasi konsumsi garam maks <strong>1 sdt/hari</strong> &amp; minum air <strong>8–12 gelas/hari</strong> untuk mencegah tekanan darah tinggi dan pembengkakan.</p>
                             </div>
                         </div>
 
-                        <!-- Porsi Makan -->
+                        <!-- Porsi Makan Harian -->
                         <h5 class="fw-bold text-dark mb-3">Porsi Makan Harian yang Dianjurkan</h5>
                         <div class="row g-3 mb-4">
                             <div class="col-6 col-md-3">
@@ -147,7 +155,7 @@
                                         <img src="{{ asset('images/icons/rice-icon.png') }}" alt="Nasi/Karbohidrat">
                                     </div>
                                     <h6 class="fw-bold" style="font-size:0.85rem;">Nasi / Karbohidrat</h6>
-                                    <span class="badge rounded-pill" style="background:#F0B429;color:#fff;">5 porsi</span>
+                                    <span class="badge rounded-pill" style="background:#F0B429;color:#fff;">6 porsi</span>
                                 </div>
                             </div>
                             <div class="col-6 col-md-3">
@@ -155,8 +163,8 @@
                                     <div class="porsi-icon" style="background:#FFF8E1;">
                                         <img src="{{ asset('images/icons/protein-icon.png') }}" alt="Protein Hewani & Nabati">
                                     </div>
-                                    <h6 class="fw-bold" style="font-size:0.85rem;">Protein Hewani & Nabati</h6>
-                                    <span class="badge rounded-pill" style="background:#0375C4;">4 porsi</span>
+                                    <h6 class="fw-bold" style="font-size:0.85rem;">Protein Hewani &amp; Nabati</h6>
+                                    <span class="badge rounded-pill" style="background:#0375C4;">4 porsi Hewani + 4 porsi Nabati</span>
                                 </div>
                             </div>
                             <div class="col-6 col-md-3">
@@ -188,52 +196,18 @@
                                     <table class="table table-borderless align-middle">
                                         <thead>
                                             <tr class="text-center text-muted small border-bottom">
-                                                <th>Senin</th>
-                                                <th>Selasa</th>
-                                                <th>Rabu</th>
-                                                <th>Kamis</th>
-                                                <th>Jumat</th>
-                                                <th>Sabtu</th>
-                                                <th>Minggu</th>
+                                                <th>Senin</th><th>Selasa</th><th>Rabu</th><th>Kamis</th><th>Jumat</th><th>Sabtu</th><th>Minggu</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr class="text-center">
+                                                @for ($i = 0; $i < 7; $i++)
                                                 <td>
                                                     <div class="form-check d-flex justify-content-center">
                                                         <input class="form-check-input custom-checkbox fs-4" type="checkbox">
                                                     </div>
                                                 </td>
-                                                <td>
-                                                    <div class="form-check d-flex justify-content-center">
-                                                        <input class="form-check-input custom-checkbox fs-4" type="checkbox">
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-check d-flex justify-content-center">
-                                                        <input class="form-check-input custom-checkbox fs-4" type="checkbox">
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-check d-flex justify-content-center">
-                                                        <input class="form-check-input custom-checkbox fs-4" type="checkbox">
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-check d-flex justify-content-center">
-                                                        <input class="form-check-input custom-checkbox fs-4" type="checkbox">
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-check d-flex justify-content-center">
-                                                        <input class="form-check-input custom-checkbox fs-4" type="checkbox">
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-check d-flex justify-content-center">
-                                                        <input class="form-check-input custom-checkbox fs-4" type="checkbox">
-                                                    </div>
-                                                </td>
+                                                @endfor
                                             </tr>
                                         </tbody>
                                     </table>
@@ -241,7 +215,7 @@
                             </div>
                         </div>
 
-                        <!-- Do not do -->
+                        <!-- Yang Harus Dihindari -->
                         <h5 class="fw-bold text-dark mb-3">Yang Harus Dihindari</h5>
                         <div class="row g-3">
                             <div class="col-md-6">
@@ -253,87 +227,116 @@
                             <div class="col-md-6">
                                 <div class="danger-card">
                                     <i class="bi bi-x-circle-fill text-danger fs-4 me-3"></i>
-                                    <span class="fw-semibold">Merokok & terpapar asap rokok</span>
+                                    <span class="fw-semibold">Merokok &amp; terpapar asap rokok</span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="danger-card">
                                     <i class="bi bi-x-circle-fill text-danger fs-4 me-3"></i>
-                                    <span class="fw-semibold">Minum minuman beralkohol</span>
+                                    <span class="fw-semibold">Konsumsi makanan tinggi garam &amp; lemak jenuh</span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="danger-card">
                                     <i class="bi bi-x-circle-fill text-danger fs-4 me-3"></i>
-                                    <span class="fw-semibold">Aktivitas fisik terlalu berat</span>
+                                    <span class="fw-semibold">Aktivitas fisik terlalu berat atau mengangkat beban</span>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- END TAB 2 -->
 
-                    <!-- TAB 3: Tanda Bahaya & Jurnal -->
+                    <!-- ================================================ -->
+                    <!-- TAB 3: Tanda Bahaya & Jurnal                     -->
+                    <!-- ================================================ -->
                     <div class="tab-pane fade" id="bahaya" role="tabpanel" aria-labelledby="bahaya-tab">
+
+                        <!-- Banner Alert Merah -->
                         <div class="alert-banner mb-4 rounded-4 shadow-sm text-center">
                             <i class="bi bi-exclamation-triangle-fill display-5 mb-2 d-block text-white"></i>
-                            <h4 class="fw-bold mb-2 text-white">TANDA BAHAYA TRIMESTER 1</h4>
-                            <p class="mb-0 text-white-50 fs-6">Segera periksa ke klinik jika mengalami Demam Tinggi, Mual/Muntah Hebat, Perdarahan, atau Nyeri Perut Hebat!</p>
+                            <h4 class="fw-bold mb-2 text-white">TANDA BAHAYA TRIMESTER 2!</h4>
+                            <p class="mb-0 text-white-50 fs-6">Segera periksa ke Puskesmas/Rumah Sakit jika mengalami tanda bahaya berikut.</p>
                         </div>
 
                         <div class="card border-0 shadow-sm rounded-4 bg-white">
                             <div class="card-body p-3 p-md-4 p-lg-5">
-                                <h5 class="fw-bold text-dark border-bottom pb-3 mb-4"><i class="bi bi-journal-medical text-primary me-2"></i>Formulir Jurnal Kesehatan Harian</h5>
-                                
+                                <h5 class="fw-bold text-dark border-bottom pb-3 mb-4">
+                                    <i class="bi bi-journal-medical text-primary me-2"></i>Formulir Jurnal Kesehatan Harian
+                                </h5>
+
                                 <form action="{{ route('pasien.buku-kia.store') }}" method="POST">
                                     @csrf
-                                    <!-- Menyesuaikan dengan KiaCheckinController logic (mengirim flag_x) -->
                                     <input type="hidden" name="from_buku_kia" value="1">
-                                    
+                                    <input type="hidden" name="trimester" value="2">
+
                                     <div class="mb-4">
-                                        <!-- Tanda Bahaya Switches -->
+                                        <!-- 1. Demam Tinggi -->
                                         <div class="d-flex justify-content-between align-items-center p-3 mb-3 bg-light rounded-3 kia-switch-row">
-                                            <label class="fw-semibold mb-0" for="flag_0">Apakah ibu mengalami pandangan kabur?</label>
+                                            <label class="fw-semibold mb-0" for="t2_flag_0">Demam Tinggi?</label>
                                             <div class="form-check form-switch m-0">
-                                                <input class="form-check-input toggle-switch" type="checkbox" name="flag_0" id="flag_0" value="1">
+                                                <input class="form-check-input toggle-switch" type="checkbox" name="flag_0" id="t2_flag_0" value="1">
                                             </div>
                                         </div>
+                                        <!-- 2. Muntah darah -->
                                         <div class="d-flex justify-content-between align-items-center p-3 mb-3 bg-light rounded-3 kia-switch-row">
-                                            <label class="fw-semibold mb-0" for="flag_1">Keluar cairan berbau dari jalan lahir?</label>
+                                            <label class="fw-semibold mb-0" for="t2_flag_1">
+                                                Muntah darah?
+                                                <span class="badge ms-2 rounded-pill" style="background:#DC3545;font-size:0.7rem;">Baru</span>
+                                            </label>
                                             <div class="form-check form-switch m-0">
-                                                <input class="form-check-input toggle-switch" type="checkbox" name="flag_1" id="flag_1" value="1">
+                                                <input class="form-check-input toggle-switch" type="checkbox" name="flag_1" id="t2_flag_1" value="1">
                                             </div>
                                         </div>
+                                        <!-- 3. Napas pendek & jantung berdebar -->
                                         <div class="d-flex justify-content-between align-items-center p-3 mb-3 bg-light rounded-3 kia-switch-row">
-                                            <label class="fw-semibold mb-0" for="flag_2">Pusing/sakit kepala berat?</label>
+                                            <label class="fw-semibold mb-0" for="t2_flag_2">
+                                                Napas pendek dan jantung berdebar kencang?
+                                                <span class="badge ms-2 rounded-pill" style="background:#DC3545;font-size:0.7rem;">Baru</span>
+                                            </label>
                                             <div class="form-check form-switch m-0">
-                                                <input class="form-check-input toggle-switch" type="checkbox" name="flag_2" id="flag_2" value="1">
+                                                <input class="form-check-input toggle-switch" type="checkbox" name="flag_2" id="t2_flag_2" value="1">
                                             </div>
                                         </div>
+                                        <!-- 4. Nyeri perut hebat -->
                                         <div class="d-flex justify-content-between align-items-center p-3 mb-3 bg-light rounded-3 kia-switch-row">
-                                            <label class="fw-semibold mb-0" for="flag_3">Mual dan muntah hebat?</label>
+                                            <label class="fw-semibold mb-0" for="t2_flag_3">Nyeri perut hebat?</label>
                                             <div class="form-check form-switch m-0">
-                                                <input class="form-check-input toggle-switch" type="checkbox" name="flag_3" id="flag_3" value="1">
+                                                <input class="form-check-input toggle-switch" type="checkbox" name="flag_3" id="t2_flag_3" value="1">
                                             </div>
                                         </div>
+                                        <!-- 5. Pandangan kabur -->
                                         <div class="d-flex justify-content-between align-items-center p-3 mb-3 bg-light rounded-3 kia-switch-row">
-                                            <label class="fw-semibold mb-0" for="flag_4">Perdarahan?</label>
+                                            <label class="fw-semibold mb-0" for="t2_flag_4">Pandangan kabur?</label>
                                             <div class="form-check form-switch m-0">
-                                                <input class="form-check-input toggle-switch" type="checkbox" name="flag_4" id="flag_4" value="1">
+                                                <input class="form-check-input toggle-switch" type="checkbox" name="flag_4" id="t2_flag_4" value="1">
                                             </div>
                                         </div>
+                                        <!-- 6. Perdarahan / cairan berbau -->
                                         <div class="d-flex justify-content-between align-items-center p-3 mb-3 bg-light rounded-3 kia-switch-row">
-                                            <label class="fw-semibold mb-0" for="flag_5">Demam Tinggi?</label>
+                                            <label class="fw-semibold mb-0" for="t2_flag_5">Perdarahan / keluar cairan dari jalan lahir berbau?</label>
                                             <div class="form-check form-switch m-0">
-                                                <input class="form-check-input toggle-switch" type="checkbox" name="flag_5" id="flag_5" value="1">
+                                                <input class="form-check-input toggle-switch" type="checkbox" name="flag_5" id="t2_flag_5" value="1">
                                             </div>
                                         </div>
+                                        <!-- 7. Pusing / sakit kepala berat -->
                                         <div class="d-flex justify-content-between align-items-center p-3 mb-3 bg-light rounded-3 kia-switch-row">
-                                            <label class="fw-semibold mb-0" for="flag_6">Nyeri perut hebat?</label>
+                                            <label class="fw-semibold mb-0" for="t2_flag_6">Pusing / sakit kepala berat?</label>
                                             <div class="form-check form-switch m-0">
-                                                <input class="form-check-input toggle-switch" type="checkbox" name="flag_6" id="flag_6" value="1">
+                                                <input class="form-check-input toggle-switch" type="checkbox" name="flag_6" id="t2_flag_6" value="1">
+                                            </div>
+                                        </div>
+                                        <!-- 8. Sakit saat kencing / keputihan gatal -->
+                                        <div class="d-flex justify-content-between align-items-center p-3 mb-3 bg-light rounded-3 kia-switch-row">
+                                            <label class="fw-semibold mb-0" for="t2_flag_7">
+                                                Sakit saat kencing / keluar keputihan gatal?
+                                                <span class="badge ms-2 rounded-pill" style="background:#DC3545;font-size:0.7rem;">Baru</span>
+                                            </label>
+                                            <div class="form-check form-switch m-0">
+                                                <input class="form-check-input toggle-switch" type="checkbox" name="flag_7" id="t2_flag_7" value="1">
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="d-grid mt-4">
                                         <button type="submit" class="btn btn-lg fw-bold text-white shadow-sm" style="background: linear-gradient(135deg, #0375C4, #0ea5e9); border-radius: 12px;">
                                             <i class="bi bi-save me-2"></i> Simpan Catatan Hari Ini
@@ -343,37 +346,64 @@
                             </div>
                         </div>
                     </div>
+                    <!-- END TAB 3 -->
 
-                    <!-- TAB 4: Mental & Kelas KIA -->
+                    <!-- ================================================ -->
+                    <!-- TAB 4: Mental & Kelas KIA                        -->
+                    <!-- ================================================ -->
                     <div class="tab-pane fade" id="mental" role="tabpanel" aria-labelledby="mental-tab">
-                        <h5 class="fw-bold text-dark mb-4">Tips Menjaga Kesehatan Jiwa</h5>
+                        <h5 class="fw-bold text-dark mb-4">Persiapan Mental Menyambut Kelahiran</h5>
                         <div class="row g-3 g-md-4 mb-5">
                             <div class="col-12 col-md-6 col-lg-4">
-                                <div class="pastel-card" style="background-color: #f3e8ff;">
-                                    <i class="bi bi-moon-stars-fill mb-3 fs-2 d-block" style="color: #9333ea;"></i>
-                                    <h6 class="fw-bold text-dark">Tidur Cukup</h6>
-                                    <p class="small text-muted mb-0">Pastikan kualitas tidur Anda terjaga. Istirahat 7-8 jam sangat dianjurkan.</p>
+                                <div class="pastel-card" style="background-color: #e0f2fe;">
+                                    <i class="bi bi-chat-heart-fill mb-3 fs-2 d-block" style="color: #0375C4;"></i>
+                                    <h6 class="fw-bold text-dark">Diskusi Rencana Persalinan</h6>
+                                    <p class="small text-muted mb-0">Bicarakan dengan suami dan bidan mengenai tempat, metode, dan pendamping persalinan yang Anda inginkan.</p>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-lg-4">
                                 <div class="pastel-card" style="background-color: #fce7f3;">
-                                    <i class="bi bi-cup-hot-fill mb-3 fs-2 d-block" style="color: #db2777;"></i>
-                                    <h6 class="fw-bold text-dark">Makan Bergizi</h6>
-                                    <p class="small text-muted mb-0">Bukan tentang seberapa banyak porsi, tetapi keseimbangan gizinya.</p>
+                                    <i class="bi bi-wind mb-3 fs-2 d-block" style="color: #db2777;"></i>
+                                    <h6 class="fw-bold text-dark">Latihan Pernapasan</h6>
+                                    <p class="small text-muted mb-0">Mulai latihan teknik pernapasan dalam dan relaksasi untuk mempersiapkan diri menghadapi proses persalinan.</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="pastel-card" style="background-color: #f0fdf4;">
+                                    <i class="bi bi-people-fill mb-3 fs-2 d-block" style="color: #16a34a;"></i>
+                                    <h6 class="fw-bold text-dark">Dukungan Suami &amp; Keluarga</h6>
+                                    <p class="small text-muted mb-0">Libatkan suami dalam setiap pemeriksaan. Dukungan emosional dari keluarga sangat berpengaruh pada kesehatan ibu dan janin.</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="pastel-card" style="background-color: #fef9c3;">
+                                    <i class="bi bi-music-note-beamed mb-3 fs-2 d-block" style="color: #ca8a04;"></i>
+                                    <h6 class="fw-bold text-dark">Stimulasi Janin</h6>
+                                    <p class="small text-muted mb-0">Ajak bicara, perdengarkan musik lembut, atau bacakan cerita untuk si kecil. Janin sudah bisa mendengar sejak bulan ke-5.</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="pastel-card" style="background-color: #f3e8ff;">
+                                    <i class="bi bi-moon-stars-fill mb-3 fs-2 d-block" style="color: #9333ea;"></i>
+                                    <h6 class="fw-bold text-dark">Tidur Cukup &amp; Berkualitas</h6>
+                                    <p class="small text-muted mb-0">Tidur miring ke kiri dianjurkan untuk melancarkan aliran darah ke janin. Gunakan bantal kehamilan jika perlu.</p>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-lg-4">
                                 <div class="pastel-card" style="background-color: #fee2e2;">
-                                    <i class="bi bi-people-fill mb-3 fs-2 d-block" style="color: #e11d48;"></i>
-                                    <h6 class="fw-bold text-dark">Dukungan Suami & Keluarga</h6>
-                                    <p class="small text-muted mb-0">Komunikasikan perasaan Anda, dukungan keluarga sangat penting di masa ini.</p>
+                                    <i class="bi bi-journal-text mb-3 fs-2 d-block" style="color: #e11d48;"></i>
+                                    <h6 class="fw-bold text-dark">Catat Gerakan Janin</h6>
+                                    <p class="small text-muted mb-0">Mulai bulan ke-5, hitung gerakan janin minimal 10 kali dalam 2 jam. Segera hubungi bidan jika gerakan berkurang drastis.</p>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Absensi Kelas Ibu Hamil -->
                         <div class="card border-0 shadow-sm rounded-4 bg-white">
                             <div class="card-body p-4">
-                                <h5 class="fw-bold text-dark mb-4"><i class="bi bi-card-checklist text-primary me-2"></i>Absensi Kelas Ibu Hamil</h5>
+                                <h5 class="fw-bold text-dark mb-4">
+                                    <i class="bi bi-card-checklist text-primary me-2"></i>Absensi Kelas Ibu Hamil — Trimester 2
+                                </h5>
                                 <div class="table-responsive">
                                     <table class="table table-hover align-middle table-modern">
                                         <thead>
@@ -388,19 +418,25 @@
                                             <tr>
                                                 <td class="text-center">1</td>
                                                 <td>-</td>
-                                                <td>Perawatan Trimester 1</td>
+                                                <td>Perawatan Kehamilan Trimester 2</td>
                                                 <td class="text-center"><span class="badge bg-light text-dark border">Belum Hadir</span></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center">2</td>
                                                 <td>-</td>
-                                                <td>Nutrisi & ASI Eksklusif</td>
+                                                <td>Nutrisi &amp; Penambahan Berat Badan Ideal</td>
                                                 <td class="text-center"><span class="badge bg-light text-dark border">Belum Hadir</span></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center">3</td>
                                                 <td>-</td>
-                                                <td>Persiapan Persalinan</td>
+                                                <td>Persiapan Persalinan &amp; Tanda Bahaya</td>
+                                                <td class="text-center"><span class="badge bg-light text-dark border">Belum Hadir</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">4</td>
+                                                <td>-</td>
+                                                <td>Stimulasi Janin &amp; Kesehatan Mental Ibu</td>
                                                 <td class="text-center"><span class="badge bg-light text-dark border">Belum Hadir</span></td>
                                             </tr>
                                         </tbody>
@@ -409,22 +445,25 @@
                             </div>
                         </div>
                     </div>
+                    <!-- END TAB 4 -->
+
                 </div>
+                <!-- END Tabs Content -->
 
             </div>
         </div>
+        <!-- END Main Card -->
+
     </div>
 </div>
 @endsection
 
 @push('scripts')
 <script>
-    // Circular Progress Animation
-    document.addEventListener("DOMContentLoaded", function() {
-        const circles = document.querySelectorAll('.circular-progress');
-        circles.forEach(circle => {
-            let percentage = circle.getAttribute('data-percentage');
-            // Animate using conic-gradient dynamically
+    document.addEventListener("DOMContentLoaded", function () {
+        // Circular Progress Animation
+        document.querySelectorAll('.circular-progress').forEach(function (circle) {
+            const percentage = circle.getAttribute('data-percentage');
             circle.style.background = `conic-gradient(#0ea5e9 ${percentage * 3.6}deg, #e2e8f0 0deg)`;
         });
     });

@@ -108,4 +108,16 @@ class DashboardController extends Controller
 
         return view('pasien.buku-kia', compact('patient', 'trimester'));
     }
+
+    public function bukuKiaTrimester2()
+    {
+        $user = auth()->user();
+        $patient = $user->patient;
+
+        if (!$patient) {
+            return view('pasien.no-data');
+        }
+
+        return view('pasien.buku-kia-trimester2', compact('patient'));
+    }
 }
