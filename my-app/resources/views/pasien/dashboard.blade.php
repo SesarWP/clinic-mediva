@@ -49,7 +49,7 @@
 <!-- Quick Actions -->
 <div class="row g-3 mb-4">
     <div class="col-md-6">
-        <a href="{{ route('pasien.health-updates.index') }}" class="card custom-card text-decoration-none hover-shadow" style="border:2px solid #06b6d4;">
+        <a href="{{ route('pasien.buku-kia.index') }}" class="card custom-card text-decoration-none hover-shadow" style="border:2px solid #06b6d4;">
             <div class="card-body d-flex align-items-center gap-3">
                 <div style="width:56px;height:56px;border-radius:12px;background:#e0f2fe;display:flex;align-items:center;justify-content:center;">
                     <i class="bi bi-journal-medical text-info" style="font-size:1.5rem; color: #06b6d4 !important;"></i>
