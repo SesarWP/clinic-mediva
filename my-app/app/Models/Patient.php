@@ -78,6 +78,14 @@ class Patient extends Model
     }
 
     /**
+     * Konsultasi chat pasien & bidan
+     */
+    public function consultations()
+    {
+        return $this->hasMany(Consultation::class)->orderBy('created_at', 'asc');
+    }
+
+    /**
      * Hitung usia kehamilan dari HPHT
      */
     public function getUsiaKehamilanAttribute(): ?string

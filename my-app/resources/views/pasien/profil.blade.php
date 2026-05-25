@@ -11,6 +11,15 @@
                 <i class="bi bi-person-fill text-primary me-2"></i> Edit Profil
             </div>
             <div class="card-body">
+
+                @if(session('success'))
+                    <div class="alert alert-success alert-dismissible fade show d-flex align-items-center mb-4" role="alert">
+                        <i class="bi bi-check-circle-fill me-2" style="font-size:1.1rem;"></i>
+                        <div>{{ session('success') }}</div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                @endif
+
                 <form action="{{ route('pasien.profil.update') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
