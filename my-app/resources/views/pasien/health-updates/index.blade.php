@@ -164,8 +164,8 @@
         <div class="card shadow-sm rounded-4 border-0 mb-4 sticky-top" style="top: 20px;">
             <div class="card-header bg-white border-bottom-0 pt-4 pb-0 px-4 d-flex justify-content-between align-items-center">
                 <h5 class="fw-bold mb-0 text-dark"><i class="bi bi-chat-dots-fill text-primary me-2"></i>Tanya Bidan</h5>
-                <span class="badge {{ isset($messageCount) && $messageCount >= 3 ? 'bg-danger' : 'bg-secondary' }} rounded-pill">
-                    Sesi: {{ $messageCount ?? 0 }}/3
+                <span class="badge {{ isset($messageCount) && $messageCount >= 3 ? 'bg-danger' : 'bg-primary' }} rounded-pill">
+                    Sisa Kuota: {{ max(0, 3 - ($messageCount ?? 0)) }}x
                 </span>
             </div>
             <div class="card-body p-4">
@@ -194,6 +194,7 @@
                         <div class="text-center text-muted my-4">
                             <i class="bi bi-chat-heart text-black-50 mb-2 d-block" style="font-size: 2rem;"></i>
                             <small>Punya pertanyaan seputar keluhan ringan? Tanyakan di sini.</small>
+                            <p class="text-muted small mt-2 mb-0">Anda memiliki batas maksimal mengirim <strong>3 pesan</strong> ke bidan.</p>
                         </div>
                     @endforelse
                 </div>
@@ -210,7 +211,7 @@
                     </div>
                 </form>
                 <div class="text-center mt-3">
-                    <small class="text-muted" style="font-size: 0.75rem;"><i class="bi bi-info-circle me-1"></i>Hanya untuk pertanyaan ringan. Kondisi darurat segera ke klinik.</small>
+                    <small class="text-muted" style="font-size: 0.75rem;"><i class="bi bi-info-circle me-1"></i><strong>Batas maksimal 3 pesan.</strong> Hanya untuk keluhan ringan. Jika darurat, segera ke klinik.</small>
                 </div>
                 @else
                 <div class="alert alert-warning border-warning border-start border-4 rounded-3 text-center mb-0" style="font-size: 0.85rem;">
