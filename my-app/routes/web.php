@@ -12,9 +12,16 @@ use App\Http\Controllers\Pasien\ProfileController;
 use App\Http\Controllers\Pasien\HealthUpdateController as PasienHealthUpdateController;
 
 // ============================================
-// HALAMAN UTAMA - Pilih Login
+// PUBLIC LANDING PAGE
 // ============================================
-Route::get('/', [AuthController::class, 'showLoginChoice'])->name('login');
+Route::get('/', function () {
+    return view('landing');
+})->name('home');
+
+// ============================================
+// HALAMAN PILIH LOGIN
+// ============================================
+Route::get('/login', [AuthController::class, 'showLoginChoice'])->name('login');
 
 // ============================================
 // AUTHENTICATION ROUTES
