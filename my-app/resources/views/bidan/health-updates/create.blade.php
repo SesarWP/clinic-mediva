@@ -176,12 +176,9 @@
                     <!-- Keluhan & Catatan -->
                     <h6 class="fw-bold text-primary mb-3 mt-3"><i class="bi bi-chat-left-text me-1"></i> Keluhan & Catatan</h6>
                     <div class="mb-3">
-                        <label class="form-label fw-semibold">Keluhan Pasien</label>
-                        <textarea name="keluhan" class="form-control" rows="2" placeholder="Keluhan yang disampaikan pasien...">{{ old('keluhan') }}</textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label fw-semibold">Catatan Pasien</label>
-                        <textarea name="catatan_pasien" class="form-control" rows="2" placeholder="Catatan dari pasien...">{{ old('catatan_pasien') }}</textarea>
+                        <label class="form-label fw-semibold">Keluhan & Catatan Pasien</label>
+                        <textarea name="keluhan" class="form-control" rows="3" placeholder="Tuliskan keluhan dan catatan yang disampaikan pasien...">{{ old('keluhan') }}</textarea>
+                        <div class="form-text">Gabungkan keluhan dan catatan pasien dalam satu kolom ini.</div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label fw-semibold">Catatan Bidan</label>
