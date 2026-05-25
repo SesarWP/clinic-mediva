@@ -60,6 +60,7 @@
 
                 <!-- Tabs Content -->
                 <div class="tab-content kia-tab-content mt-3" id="kia-tabs-content">
+                <div class="tab-content kia-tab-content mt-3" id="kia-tabs-content">
                     
                     <!-- TAB 1: Perkembangan Janin -->
                     <div class="tab-pane fade show active" id="janin" role="tabpanel" aria-labelledby="janin-tab">

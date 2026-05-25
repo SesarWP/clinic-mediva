@@ -32,7 +32,7 @@
             <i class="bi bi-droplet-fill"></i> Screening Anemia
         </a>
         <a href="{{ route('pasien.riwayat') }}" class="nav-link {{ request()->routeIs('pasien.riwayat*') ? 'active' : '' }}" style="{{ request()->routeIs('pasien.riwayat*') ? 'background:linear-gradient(135deg,#06b6d4,#0ea5e9);box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);' : '' }}">
-            <i class="bi bi-clipboard2-pulse-fill"></i> Riwayat Periksa
+            <i class="bi bi-clipboard2-pulse-fill"></i> Riwayat ANC
         </a>
 
         <hr style="border-color: rgba(255,255,255,0.12); margin: 12px 4px;">
@@ -53,21 +53,32 @@
 <div class="main-content">
     <!-- Header -->
     <header class="top-header">
-        <div class="d-flex align-items-center gap-3">
-            <button class="btn btn-light btn-sm sidebar-toggle">
+        <div class="d-flex align-items-center gap-2 min-w-0" style="flex:1;overflow:hidden;">
+            <button class="btn btn-light btn-sm sidebar-toggle flex-shrink-0">
                 <i class="bi bi-list"></i>
             </button>
-            <h5 class="mb-0 fw-bold text-dark">@yield('page-title', 'Dashboard Pasien')</h5>
+            <h5 class="mb-0 fw-bold text-dark text-truncate" style="font-size:clamp(0.9rem,2.5vw,1.25rem);">
+                @yield('page-title', 'Dashboard Pasien')
+            </h5>
         </div>
-        <div class="user-info">
-            <div>
-                <div class="fw-semibold" style="font-size:0.9rem;">{{ auth()->user()->name }}</div>
-                <div class="text-muted" style="font-size:0.75rem;">Pasien</div>
+        <div class="user-info flex-shrink-0 ms-2">
+            @php
+                $fullName = auth()->user()->name;
+                $nameParts = explode(' ', trim($fullName));
+                $shortName = count($nameParts) > 1
+                    ? $nameParts[0] . ' ' . strtoupper(substr($nameParts[1], 0, 1)) . '.'
+                    : $nameParts[0];
+            @endphp
+            <div class="d-none d-sm-block text-end">
+                <div class="fw-semibold text-truncate" style="font-size:0.88rem;max-width:120px;">{{ $shortName }}</div>
+                <div class="text-muted" style="font-size:0.72rem;">Pasien</div>
             </div>
             @if(auth()->user()->profile_photo_path)
-                <img src="{{ asset('storage/' . auth()->user()->profile_photo_path) }}" alt="User Avatar" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);">
+                <img src="{{ asset('storage/' . auth()->user()->profile_photo_path) }}"
+                     alt="User Avatar"
+                     style="width:38px;height:38px;min-width:38px;border-radius:50%;object-fit:cover;box-shadow:0 4px 12px rgba(6,182,212,0.3);flex-shrink:0;">
             @else
-                <div class="user-avatar" style="width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #06b6d4, #0ea5e9);box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3); color: white; font-weight: bold;">
+                <div style="width:38px;height:38px;min-width:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#06b6d4,#0ea5e9);box-shadow:0 4px 12px rgba(6,182,212,0.3);color:white;font-weight:700;font-size:0.95rem;flex-shrink:0;">
                     {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
                 </div>
             @endif

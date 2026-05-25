@@ -1,7 +1,7 @@
 @extends('layouts.pasien')
 
-@section('title', 'Riwayat Pemeriksaan - Klinik Mediva')
-@section('page-title', 'Riwayat Pemeriksaan')
+@section('title', 'Riwayat ANC - Klinik Mediva')
+@section('page-title', 'Riwayat ANC')
 
 @section('content')
 <div class="card custom-card">
