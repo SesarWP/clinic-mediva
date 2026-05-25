@@ -60,8 +60,17 @@ class PatientController extends Controller
 
     public function show(string $id)
     {
-        $patient = Patient::with(['ancExaminations.bidan', 'anemiaScreenings.bidan'])->findOrFail($id);
-        return view('bidan.patients.show', compact('patient'));
+        $patient = Patient::with([
+            'ancExaminations.bidan',
+            'anemiaScreenings.bidan',
+            'healthUpdates.bidan',
+            'consultations.bidan',
+        ])->findOrFail($id);
+
+        $consultationCount = $patient->consultations
+            ->where('sender_role', 'pasien')->count();
+
+        return view('bidan.patients.show', compact('patient', 'consultationCount'));
     }
 
     public function edit(string $id)
