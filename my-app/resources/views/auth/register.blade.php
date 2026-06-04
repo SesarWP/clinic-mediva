@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Pasien - Klinik Mediva Ngawi</title>
+    <title>Registrasi Pasien - Klinik Mediva Ngawi</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -74,7 +74,7 @@
             background: white;
             border: 1.5px solid #e2e8f0;
             border-radius: 24px;
-            padding: 48px 40px;
+            padding: 40px 40px;
             box-shadow: 0 4px 24px rgba(0,0,0,0.05);
         }
         .login-icon {
@@ -99,7 +99,7 @@
             color: #64748b;
             font-size: 0.92rem;
             text-align: center;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
             font-weight: 500;
         }
 
@@ -165,27 +165,27 @@
             border-radius: 12px;
             padding: 12px 16px;
             font-size: 0.88rem;
+            margin-bottom: 20px;
+        }
+        
+        .alert-danger ul {
+            margin-bottom: 0;
+            padding-left: 20px;
         }
 
-        /* ===== Demo info ===== */
-        .demo-info {
-            background: #fff1f2;
-            border: 1.5px solid rgba(225,29,72,0.15);
-            border-radius: 12px;
-            padding: 13px 16px;
-            margin-top: 20px;
-            color: #64748b;
-            font-size: 0.83rem;
+        .login-link {
             text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #64748b;
         }
-        .demo-info strong { color: var(--rose); }
-        .demo-info code {
-            color: var(--teal-dk);
-            background: white;
-            padding: 2px 8px;
-            border-radius: 6px;
+        .login-link a {
+            color: var(--rose);
             font-weight: 600;
-            border: 1px solid #e2e8f0;
+            text-decoration: none;
+        }
+        .login-link a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -197,63 +197,67 @@
             <i class="bi bi-heart-pulse-fill me-2" style="color:var(--teal);"></i>Klinik <span>Mediva</span>
         </a>
         <a href="{{ route('login') }}" class="btn-back">
-            <i class="bi bi-arrow-left"></i> Pilih Portal
+            <i class="bi bi-arrow-left"></i> Kembali
         </a>
     </nav>
 
     <div class="main-wrap">
         <div class="login-container">
-
-            @if(session('warning'))
-                <div class="alert alert-dismissible fade show mb-4" role="alert"
-                     style="border-radius:12px;border:1.5px solid #fbbf24;background:#fffbeb;color:#92400e;font-size:0.88rem;font-weight:500;padding:13px 16px;">
-                    <i class="bi bi-exclamation-triangle-fill me-2" style="color:#f59e0b;"></i>
-                    {{ session('warning') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                </div>
-            @endif
-
             <div class="login-box">
                 <div class="login-icon">
-                    <i class="bi bi-person-heart"></i>
+                    <i class="bi bi-person-plus-fill"></i>
                 </div>
-                <h2>Login Pasien</h2>
-                <p class="login-subtitle">Lihat riwayat pemeriksaan Anda</p>
+                <h2>Daftar Akun Baru</h2>
+                <p class="login-subtitle">Bergabunglah sebagai Pasien Klinik Mediva</p>
 
                 @if($errors->any())
-                    <div class="alert alert-danger mb-4">
-                        <i class="bi bi-exclamation-circle me-1"></i>
-                        {{ $errors->first() }}
+                    <div class="alert alert-danger">
+                        <i class="bi bi-exclamation-circle me-1"></i> Terjadi Kesalahan
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
                     </div>
                 @endif
 
-                <form action="{{ route('login.pasien') }}" method="POST">
+                <form action="{{ route('register') }}" method="POST">
                     @csrf
+                    <div class="mb-3">
+                        <label class="form-label">Nama Lengkap</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-person"></i></span>
+                            <input type="text" name="name" class="form-control" placeholder="Masukkan nama Anda" value="{{ old('name') }}" required autofocus>
+                        </div>
+                    </div>
                     <div class="mb-3">
                         <label class="form-label">Email</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-                            <input type="email" name="email" class="form-control" placeholder="pasien@mediva.com" value="{{ old('email') }}" required autofocus>
+                            <input type="email" name="email" class="form-control" placeholder="pasien@mediva.com" value="{{ old('email') }}" required>
                         </div>
                     </div>
-                    <div class="mb-4">
+                    <div class="mb-3">
                         <label class="form-label">Password</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="bi bi-lock"></i></span>
-                            <input type="password" name="password" class="form-control" placeholder="Masukkan password" required>
+                            <input type="password" name="password" class="form-control" placeholder="Buat password" required>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">Konfirmasi Password</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                            <input type="password" name="password_confirmation" class="form-control" placeholder="Ulangi password" required>
                         </div>
                     </div>
                     <button type="submit" class="btn-login">
-                        <i class="bi bi-box-arrow-in-right"></i> Masuk sebagai Pasien
+                        <i class="bi bi-check2-circle"></i> Daftar Sekarang
                     </button>
                 </form>
 
-                <div class="demo-info">
-                    <strong>Demo:</strong> <code>pasien@mediva.com</code> / <code>password123</code>
-                </div>
-
-                <div style="text-align: center; margin-top: 20px; font-size: 0.9rem; color: #64748b;">
-                    Belum punya akun? <a href="{{ route('register') }}" style="color: var(--rose); font-weight: 600; text-decoration: none;">Daftar di sini</a>
+                <div class="login-link">
+                    Sudah punya akun? <a href="{{ route('login.pasien') }}">Login di sini</a>
                 </div>
             </div>
 

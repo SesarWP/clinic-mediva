@@ -279,6 +279,9 @@
                         <a href="{{ route('login') }}" class="btn btn-outline-teal btn-sm px-3 fw-semibold text-center">
                             <i class="bi bi-box-arrow-in-right me-1"></i> Masuk
                         </a>
+                        <a href="{{ route('register') }}" class="btn btn-teal btn-sm px-3 fw-semibold text-center">
+                            <i class="bi bi-person-plus-fill me-1"></i> Daftar
+                        </a>
                     @endauth
                 </div>
             </div>
@@ -311,9 +314,14 @@
                                style="width:auto!important;margin-right:12px;">
                                 <i class="bi bi-arrow-right-circle me-2"></i>Mulai Sekarang
                             </a>
+                            <a href="{{ route('register') }}"
+                               class="btn btn-outline-teal d-block d-lg-inline-flex w-100 mb-3 mb-lg-0"
+                               style="width:auto!important;margin-right:12px;">
+                                Daftar Akun
+                            </a>
                             <a href="#fitur"
-                               class="btn btn-outline-teal d-block d-lg-inline-flex w-100"
-                               style="width:auto!important;">
+                               class="btn btn-link text-decoration-none d-block d-lg-inline-flex w-100"
+                               style="width:auto!important;color:#64748b;font-weight:600;">
                                 Pelajari Lebih Lanjut
                             </a>
                         @endauth
@@ -414,9 +422,14 @@
             <p class="text-muted mb-4" style="max-width:480px;margin:0 auto 24px;">
                 Bergabunglah dengan pasien Klinik Mediva Ngawi dan nikmati kemudahan pemantauan kehamilan secara digital.
             </p>
-            <a href="{{ route('login') }}" class="btn btn-teal px-5 py-3" style="font-size:1rem;">
-                <i class="bi bi-box-arrow-in-right me-2"></i>Masuk ke Portal Sekarang
-            </a>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="{{ route('login') }}" class="btn btn-outline-teal px-4 py-3" style="font-size:1rem; border-width: 2px;">
+                    <i class="bi bi-box-arrow-in-right me-2"></i>Masuk Portal
+                </a>
+                <a href="{{ route('register') }}" class="btn btn-teal px-4 py-3" style="font-size:1rem;">
+                    <i class="bi bi-person-plus-fill me-2"></i>Daftar Sekarang
+                </a>
+            </div>
         </div>
     </section>
     @endguest

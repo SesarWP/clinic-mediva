@@ -9,7 +9,9 @@ use App\Http\Controllers\Bidan\AnemiaScreeningController;
 use App\Http\Controllers\Bidan\HealthUpdateController as BidanHealthUpdateController;
 use App\Http\Controllers\Pasien\DashboardController as PasienDashboardController;
 use App\Http\Controllers\Pasien\ProfileController;
+use App\Http\Controllers\Pasien\SetupProfileController;
 use App\Http\Controllers\Pasien\HealthUpdateController as PasienHealthUpdateController;
+use App\Http\Controllers\RegisterController;
 
 // ============================================
 // PUBLIC LANDING PAGE
@@ -31,6 +33,10 @@ Route::middleware('guest')->group(function () {
     Route::post('/login/bidan', [AuthController::class, 'loginBidan']);
     Route::get('/login/pasien', [AuthController::class, 'showPasienLogin'])->name('login.pasien');
     Route::post('/login/pasien', [AuthController::class, 'loginPasien']);
+
+    // Registration Routes
+    Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+    Route::post('/register', [RegisterController::class, 'register']);
 });
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
@@ -84,6 +90,10 @@ Route::prefix('bidan')->middleware(['auth', 'role:bidan'])->name('bidan.')->grou
 // PASIEN ROUTES (Protected)
 // ============================================
 Route::prefix('pasien')->middleware(['auth', 'role:pasien'])->name('pasien.')->group(function () {
+    // Setup Profile
+    Route::get('/setup-profile', [SetupProfileController::class, 'create'])->name('setup-profile');
+    Route::post('/setup-profile', [SetupProfileController::class, 'store'])->name('setup-profile.store');
+
     // Dashboard
     Route::get('/dashboard', [PasienDashboardController::class, 'index'])->name('dashboard');
 
