@@ -12,7 +12,8 @@ class DashboardController extends Controller
         $patient = $user->patient;
 
         if (!$patient) {
-            return view('pasien.no-data');
+            return redirect()->route('pasien.setup-profile')
+                ->with('info', 'Silakan lengkapi data diri Anda terlebih dahulu.');
         }
 
         $patient->load(['ancExaminations.bidan', 'anemiaScreenings.bidan']);
@@ -98,7 +99,10 @@ class DashboardController extends Controller
             return view('pasien.no-data');
         }
 
-        return view('pasien.buku-kia-index', compact('patient'));
+        $patient->load(['kiaAlerts' => fn($q) => $q->where('is_resolved', false)->latest()]);
+        $latestAlert = $patient->kiaAlerts->first();
+
+        return view('pasien.buku-kia-index', compact('patient', 'latestAlert'));
     }
 
     public function bukuKia()

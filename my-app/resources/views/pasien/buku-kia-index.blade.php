@@ -111,6 +111,18 @@
         <!-- ================================================ -->
         <!-- SECTION 1: Hero Banner                          -->
         <!-- ================================================ -->
+
+        @if(isset($latestAlert) && $latestAlert)
+        <div class="alert d-flex align-items-start gap-3 rounded-4 mb-4 border-0"
+             style="background:#fee2e2;border-left:4px solid #dc2626 !important;border-left-style:solid !important;">
+            <i class="bi bi-exclamation-triangle-fill flex-shrink-0 mt-1" style="color:#dc2626;font-size:1.3rem;"></i>
+            <div>
+                <div class="fw-bold" style="color:#991b1b;">Tanda Bahaya Terdeteksi!</div>
+                <div class="small text-muted">{{ $latestAlert->red_flag_triggered }}</div>
+                <div class="small fw-semibold mt-1" style="color:#991b1b;">Segera hubungi bidan atau pergi ke klinik terdekat.</div>
+            </div>
+        </div>
+        @endif
         <div class="kia-hero mb-4 fade-in-up">
             <div class="row align-items-center g-4">
                 <div class="col-12 col-md-8">

@@ -120,6 +120,11 @@ class KiaCheckinController extends Controller
     {
         $patient = auth()->user()->patient;
 
+        // Enforce clinic visit lock
+        if ($patient->requires_clinic_visit) {
+            return back()->with('error', 'Sesi konsultasi dikunci. Bidan meminta Anda segera datang ke klinik untuk pemeriksaan langsung.');
+        }
+
         $request->validate([
             'message' => 'required|string|max:1000'
         ]);

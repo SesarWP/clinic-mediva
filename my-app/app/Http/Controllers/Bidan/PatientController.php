@@ -65,6 +65,8 @@ class PatientController extends Controller
             'anemiaScreenings.bidan',
             'healthUpdates.bidan',
             'consultations.bidan',
+            'kiaCheckins',
+            'kiaAlerts',
         ])->findOrFail($id);
 
         $consultationCount = $patient->consultations

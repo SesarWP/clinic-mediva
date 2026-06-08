@@ -200,7 +200,12 @@
                 </div>
 
                 <!-- Chat Input -->
-                @if(!isset($messageCount) || $messageCount < 3)
+                @if(isset($isLocked) && $isLocked)
+                <div class="alert alert-danger border-0 rounded-3 text-center mb-0 fw-semibold">
+                    <i class="bi bi-lock-fill d-block mb-1 fs-4"></i>
+                    Sesi dikunci. Bidan meminta Anda segera datang ke klinik untuk pemeriksaan langsung.
+                </div>
+                @elseif(!isset($messageCount) || $messageCount < 3)
                 <form action="{{ route('pasien.health-updates.chat') }}" method="POST">
                     @csrf
                     <div class="input-group shadow-sm rounded-pill">
