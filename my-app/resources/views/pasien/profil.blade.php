@@ -27,9 +27,9 @@
                     <div class="mb-4 text-center">
                         <div class="position-relative d-inline-block">
                             @if(auth()->user()->profile_photo_path)
-                                <img src="{{ asset('storage/' . auth()->user()->profile_photo_path) }}" alt="Profile Photo" class="rounded-circle" style="width: 120px; height: 120px; object-fit: cover; border: 4px solid #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                                <img id="profilePhotoPreview" src="{{ asset('storage/' . auth()->user()->profile_photo_path) }}?v={{ time() }}" alt="Profile Photo" class="rounded-circle" style="width: 120px; height: 120px; object-fit: cover; border: 4px solid #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
                             @else
-                                <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 120px; height: 120px; background: linear-gradient(135deg, #06b6d4, #0ea5e9); color: white; font-size: 3rem; border: 4px solid #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                                <div id="profilePhotoPreview" class="rounded-circle d-flex align-items-center justify-content-center" style="width: 120px; height: 120px; background: linear-gradient(135deg, #06b6d4, #0ea5e9); color: white; font-size: 3rem; border: 4px solid #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
                                     {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
                                 </div>
                             @endif
@@ -47,22 +47,28 @@
                     <script>
                         function previewImage(event) {
                             const input = event.target;
-                            if (input.files && input.files[0]) {
-                                const reader = new FileReader();
-                                reader.onload = function(e) {
-                                    const container = input.closest('.position-relative');
-                                    let img = container.querySelector('img');
-                                    if (!img) {
-                                        img = document.createElement('img');
-                                        img.className = 'rounded-circle';
-                                        img.style = 'width: 120px; height: 120px; object-fit: cover; border: 4px solid #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.1);';
-                                        const div = container.querySelector('div.rounded-circle');
-                                        if (div) div.replaceWith(img);
-                                    }
+                            if (!input.files || !input.files[0]) return;
+
+                            const reader = new FileReader();
+                            reader.onload = function(e) {
+                                const preview = document.getElementById('profilePhotoPreview');
+                                if (!preview) return;
+
+                                // If the current preview is a <div> (default avatar), replace it with an <img>
+                                if (preview.tagName === 'DIV') {
+                                    const img = document.createElement('img');
+                                    img.id = 'profilePhotoPreview';
+                                    img.alt = 'Profile Photo';
+                                    img.className = 'rounded-circle';
+                                    img.style.cssText = 'width: 120px; height: 120px; object-fit: cover; border: 4px solid #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.1);';
                                     img.src = e.target.result;
+                                    preview.replaceWith(img);
+                                } else {
+                                    // Already an <img>, just update src
+                                    preview.src = e.target.result;
                                 }
-                                reader.readAsDataURL(input.files[0]);
-                            }
+                            };
+                            reader.readAsDataURL(input.files[0]);
                         }
                     </script>
 
