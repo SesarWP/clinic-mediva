@@ -102,7 +102,7 @@ class KiaCheckinController extends Controller
             ]);
             
             if ($request->has('from_buku_kia')) {
-                return redirect()->route('pasien.buku-kia')->with('danger_alert', 'Tanda Bahaya Terdeteksi! Segera hubungi klinik.');
+                return redirect()->route('pasien.buku-kia.index')->with('danger_alert', 'Tanda Bahaya Terdeteksi! Segera hubungi klinik.');
             }
             return redirect()->route('pasien.health-updates.index')->with('danger_alert', 'Tanda Bahaya Terdeteksi!');
         }
@@ -111,7 +111,7 @@ class KiaCheckinController extends Controller
         $edukasi = $knowledge['edukasi'][array_rand($knowledge['edukasi'])];
         
         if ($request->has('from_buku_kia')) {
-            return redirect()->route('pasien.buku-kia')->with('success', 'Catatan harian berhasil disimpan!')->with('tahukah_ibu', $edukasi);
+            return redirect()->route('pasien.buku-kia.index')->with('success', 'Catatan harian berhasil disimpan!')->with('tahukah_ibu', $edukasi);
         }
         return redirect()->route('pasien.health-updates.index')->with('tahukah_ibu', $edukasi);
     }
