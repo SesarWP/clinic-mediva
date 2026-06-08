@@ -167,26 +167,7 @@
             font-size: 0.88rem;
         }
 
-        /* ===== Demo info ===== */
-        .demo-info {
-            background: #fff1f2;
-            border: 1.5px solid rgba(225,29,72,0.15);
-            border-radius: 12px;
-            padding: 13px 16px;
-            margin-top: 20px;
-            color: #64748b;
-            font-size: 0.83rem;
-            text-align: center;
-        }
-        .demo-info strong { color: var(--rose); }
-        .demo-info code {
-            color: var(--teal-dk);
-            background: white;
-            padding: 2px 8px;
-            border-radius: 6px;
-            font-weight: 600;
-            border: 1px solid #e2e8f0;
-        }
+
     </style>
 </head>
 <body>
@@ -248,9 +229,7 @@
                     </button>
                 </form>
 
-                <div class="demo-info">
-                    <strong>Demo:</strong> <code>pasien@mediva.com</code> / <code>password123</code>
-                </div>
+
 
                 <div style="text-align: center; margin-top: 20px; font-size: 0.9rem; color: #64748b;">
                     Belum punya akun? <a href="{{ route('register') }}" style="color: var(--rose); font-weight: 600; text-decoration: none;">Daftar di sini</a>

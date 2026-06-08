@@ -166,26 +166,7 @@
             font-size: 0.88rem;
         }
 
-        /* ===== Demo info ===== */
-        .demo-info {
-            background: #f0fdff;
-            border: 1.5px solid rgba(0,169,187,0.2);
-            border-radius: 12px;
-            padding: 13px 16px;
-            margin-top: 20px;
-            color: #64748b;
-            font-size: 0.83rem;
-            text-align: center;
-        }
-        .demo-info strong { color: var(--teal-dk); }
-        .demo-info code {
-            color: var(--blue);
-            background: white;
-            padding: 2px 8px;
-            border-radius: 6px;
-            font-weight: 600;
-            border: 1px solid #e2e8f0;
-        }
+
     </style>
 </head>
 <body>
@@ -247,9 +228,7 @@
                     </button>
                 </form>
 
-                <div class="demo-info">
-                    <strong>Demo:</strong> <code>bidan@mediva.com</code> / <code>password123</code>
-                </div>
+
             </div>
 
         </div>
